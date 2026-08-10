@@ -1,3 +1,1273 @@
-git add index.html
-git commit -m "Add Squiboom Studios website"
-git push origin main
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Squiboom Studios</title>
+<meta name="description" content="Squiboom Studios is a Roblox-based creative studio building games, AI experiences, interactive projects, and experimental digital worlds." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0c0b;
+    --bg-alt:#0d100e;
+    --surface:#121512;
+    --surface-2:#171b18;
+    --border:rgba(255,255,255,0.08);
+    --border-strong:rgba(255,255,255,0.14);
+    --text:#f4f6f4;
+    --text-secondary:#a4aea6;
+    --text-muted:#6c766e;
+    --green:#8fd14f;
+    --green-strong:#a6e06b;
+    --green-dim:rgba(143,209,79,0.12);
+    --green-line:rgba(143,209,79,0.35);
+    --blue:#6fa0ff;
+    --blue-dim:rgba(111,160,255,0.10);
+    --blue-line:rgba(111,160,255,0.3);
+    --radius-sm:8px;
+    --radius-md:14px;
+    --radius-lg:22px;
+    --font-display:'Space Grotesk', 'Inter', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --maxw:1180px;
+    --nav-h:76px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
+  input,textarea{font:inherit;color:inherit;}
+
+  .skip-link{
+    position:absolute;left:-999px;top:0;background:var(--green);color:#08150a;
+    padding:12px 18px;border-radius:0 0 8px 0;z-index:1000;font-weight:600;
+  }
+  .skip-link:focus{left:0;}
+
+  :focus-visible{
+    outline:2px solid var(--green);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  .container{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+
+  h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;letter-spacing:-0.01em;line-height:1.1;}
+  h1{font-size:clamp(2.4rem,6vw,4.4rem);letter-spacing:-0.02em;}
+  h2{font-size:clamp(1.8rem,3.6vw,2.6rem);}
+  h3{font-size:1.25rem;}
+  p{color:var(--text-secondary);}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--font-display);font-size:0.78rem;font-weight:600;
+    letter-spacing:0.14em;text-transform:uppercase;color:var(--green);
+    margin-bottom:16px;
+  }
+  .eyebrow::before{
+    content:"";width:7px;height:7px;border-radius:2px;background:var(--green);
+    display:inline-block;
+  }
+  .eyebrow.blue{color:var(--blue);}
+  .eyebrow.blue::before{background:var(--blue);}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:13px 24px;border-radius:999px;font-weight:600;font-size:0.95rem;
+    transition:transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:var(--green);color:#0a1207;
+  }
+  .btn-primary:hover{transform:translateY(-2px);background:var(--green-strong);}
+  .btn-secondary{
+    background:transparent;color:var(--text);border:1px solid var(--border-strong);
+  }
+  .btn-secondary:hover{transform:translateY(-2px);border-color:var(--green-line);color:var(--green);}
+  .btn-ghost{
+    background:var(--surface);color:var(--text);border:1px solid var(--border);
+  }
+  .btn-ghost:hover{border-color:var(--border-strong);transform:translateY(-1px);}
+  .btn-sm{padding:9px 16px;font-size:0.85rem;}
+  .btn[disabled]{opacity:.5;cursor:not-allowed;transform:none !important;}
+
+  /* ---------- Nav ---------- */
+  header.site-nav{
+    position:fixed;top:0;left:0;right:0;z-index:500;
+    height:var(--nav-h);
+    background:rgba(10,12,11,0.72);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    max-width:var(--maxw);margin:0 auto;padding:0 24px;height:100%;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .brand{display:flex;align-items:center;gap:11px;}
+  .brand-mark{
+    width:38px;height:38px;border-radius:10px;
+    background:linear-gradient(155deg,var(--green) 0%, #4f9e2c 100%);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-display);font-weight:700;color:#0a1207;font-size:0.95rem;
+    flex-shrink:0;
+  }
+  .brand-name{font-family:var(--font-display);font-weight:600;font-size:1.02rem;letter-spacing:-0.01em;}
+
+  nav.primary-links{display:flex;align-items:center;gap:6px;}
+  .nav-link{
+    padding:10px 16px;border-radius:999px;font-size:0.92rem;font-weight:500;color:var(--text-secondary);
+    transition:color .16s ease, background .16s ease;
+    position:relative;
+  }
+  .nav-link:hover{color:var(--text);background:var(--surface-2);}
+  .nav-link.active{color:var(--text);background:var(--green-dim);}
+
+  .nav-dropdown{position:relative;}
+  .nav-dropdown-panel{
+    position:absolute;top:calc(100% + 10px);left:0;min-width:200px;
+    background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-md);
+    padding:8px;opacity:0;visibility:hidden;transform:translateY(-6px);
+    transition:opacity .16s ease, transform .16s ease, visibility .16s ease;
+    box-shadow:0 20px 40px rgba(0,0,0,0.4);
+  }
+  .nav-dropdown:hover .nav-dropdown-panel,
+  .nav-dropdown:focus-within .nav-dropdown-panel{
+    opacity:1;visibility:visible;transform:translateY(0);
+  }
+  .nav-dropdown-panel a{
+    display:block;padding:9px 12px;border-radius:8px;font-size:0.88rem;color:var(--text-secondary);
+  }
+  .nav-dropdown-panel a:hover{background:var(--surface);color:var(--text);}
+
+  .nav-actions{display:flex;align-items:center;gap:10px;}
+  .hamburger{
+    display:none;width:42px;height:42px;border-radius:10px;background:var(--surface-2);
+    align-items:center;justify-content:center;border:1px solid var(--border);
+  }
+  .hamburger span{display:block;width:18px;height:2px;background:var(--text);position:relative;}
+  .hamburger span::before,.hamburger span::after{
+    content:"";position:absolute;left:0;width:18px;height:2px;background:var(--text);transition:transform .2s ease, opacity .2s ease;
+  }
+  .hamburger span::before{top:-6px;}
+  .hamburger span::after{top:6px;}
+  .hamburger[aria-expanded="true"] span{background:transparent;}
+  .hamburger[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg);}
+  .hamburger[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg);}
+
+  .mobile-menu{
+    position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;z-index:490;
+    background:var(--bg);
+    transform:translateY(-8px);opacity:0;visibility:hidden;
+    transition:opacity .22s ease, transform .22s ease, visibility .22s ease;
+    overflow-y:auto;
+  }
+  .mobile-menu.open{opacity:1;visibility:visible;transform:translateY(0);}
+  .mobile-menu-inner{padding:28px 24px 40px;display:flex;flex-direction:column;gap:4px;}
+  .mobile-link{
+    padding:16px 6px;font-family:var(--font-display);font-size:1.4rem;font-weight:600;
+    border-bottom:1px solid var(--border);color:var(--text);
+  }
+  .mobile-sub{padding:6px 6px 14px 16px;display:flex;flex-direction:column;gap:2px;}
+  .mobile-sub a{padding:10px 0;font-size:0.98rem;color:var(--text-secondary);}
+  .mobile-menu-cta{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;}
+
+  /* ---------- Layout helpers ---------- */
+  main{min-height:70vh;}
+  .section{padding:96px 0;}
+  .section-tight{padding:64px 0;}
+  .section-head{max-width:640px;margin-bottom:52px;}
+  .section-head p{font-size:1.05rem;}
+  .row-between{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;padding:calc(var(--nav-h) + 96px) 0 90px;overflow:hidden;
+    border-bottom:1px solid var(--border);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;}
+  .hero-eyebrow-row{display:flex;align-items:center;gap:10px;margin-bottom:22px;}
+  .hero h1{margin-bottom:22px;}
+  .hero .lede{font-size:1.15rem;max-width:520px;margin-bottom:16px;color:var(--text-secondary);}
+  .hero .sub{font-size:1rem;max-width:520px;margin-bottom:34px;}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+
+  .visual-block{
+    position:relative;aspect-ratio:1/1;border-radius:var(--radius-lg);
+    background:radial-gradient(120% 120% at 20% 10%, var(--surface-2), var(--bg-alt) 70%);
+    border:1px solid var(--border);overflow:hidden;
+  }
+  .visual-block .glow{
+    position:absolute;border-radius:50%;filter:blur(60px);opacity:0.55;
+  }
+  .visual-block .glow.g1{width:220px;height:220px;background:var(--green);top:-40px;left:-30px;}
+  .visual-block .glow.g2{width:200px;height:200px;background:var(--blue);bottom:-40px;right:-20px;opacity:0.35;}
+  .grid-of-squares{
+    position:absolute;inset:0;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(6,1fr);
+    gap:10px;padding:28px;
+  }
+  .grid-of-squares span{
+    border-radius:7px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);
+  }
+  .grid-of-squares span.on{background:var(--green-dim);border-color:var(--green-line);}
+  .grid-of-squares span.on-blue{background:var(--blue-dim);border-color:var(--blue-line);}
+  .grid-of-squares span.float{animation:floaty 5s ease-in-out infinite;}
+  @keyframes floaty{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-6px);}
+  }
+
+  /* ---------- Cards ---------- */
+  .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .project-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);
+    padding:26px;display:flex;flex-direction:column;gap:16px;
+    transition:transform .22s ease, border-color .22s ease, background .22s ease;
+  }
+  .project-card:hover{transform:translateY(-5px);border-color:var(--border-strong);background:var(--surface-2);}
+  .project-thumb{
+    height:150px;border-radius:var(--radius-md);position:relative;overflow:hidden;
+    background:linear-gradient(145deg, var(--surface-2), var(--bg-alt));
+    border:1px solid var(--border);
+  }
+  .project-thumb .thumb-dot{
+    position:absolute;width:120px;height:120px;border-radius:50%;filter:blur(40px);opacity:0.5;
+  }
+  .project-thumb.tone-green .thumb-dot{background:var(--green);top:-20px;left:-20px;}
+  .project-thumb.tone-blue .thumb-dot{background:var(--blue);bottom:-20px;right:-10px;}
+  .project-thumb.tone-mix .thumb-dot:first-child{background:var(--green);top:-30px;left:-10px;}
+  .project-thumb.tone-mix .thumb-dot:last-child{background:var(--blue);bottom:-30px;right:-10px;opacity:0.4;}
+  .project-thumb .thumb-tag{
+    position:absolute;bottom:10px;left:10px;font-family:var(--font-display);font-size:0.72rem;
+    letter-spacing:0.08em;text-transform:uppercase;color:var(--text-secondary);
+    background:rgba(10,12,11,0.6);padding:4px 9px;border-radius:6px;border:1px solid var(--border);
+  }
+  .project-card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;}
+  .project-card h3{font-size:1.15rem;}
+  .status-pill{
+    font-size:0.7rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;
+    padding:4px 10px;border-radius:999px;background:var(--green-dim);color:var(--green);white-space:nowrap;
+    border:1px solid var(--green-line);
+  }
+  .project-card .desc{font-size:0.92rem;line-height:1.55;flex-grow:1;}
+  .project-card .meta-row{display:flex;gap:8px;flex-wrap:wrap;}
+  .tag{
+    font-size:0.72rem;font-weight:600;letter-spacing:0.03em;color:var(--text-muted);
+    background:var(--bg-alt);border:1px solid var(--border);padding:4px 10px;border-radius:999px;
+    text-transform:capitalize;
+  }
+  .card-cta{display:flex;align-items:center;gap:6px;font-weight:600;font-size:0.9rem;color:var(--green);margin-top:4px;}
+  .card-cta svg{width:14px;height:14px;transition:transform .18s ease;}
+  .project-card:hover .card-cta svg{transform:translateX(3px);}
+
+  /* ---------- About / creators ---------- */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+  .creators-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+  .creator-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);
+    padding:32px;display:flex;flex-direction:column;gap:18px;
+  }
+  .creator-avatar{
+    width:64px;height:64px;border-radius:16px;
+    background:linear-gradient(155deg,var(--surface-2),var(--bg-alt));
+    border:1px solid var(--border-strong);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-display);font-weight:700;font-size:1.3rem;color:var(--green);
+  }
+  .creator-card h3{font-size:1.4rem;}
+  .creator-handle{
+    display:inline-flex;align-items:center;gap:7px;font-size:0.85rem;color:var(--text-secondary);
+    font-family:var(--font-display);letter-spacing:0.02em;
+  }
+  .creator-handle .dot{width:6px;height:6px;border-radius:50%;background:var(--green);}
+
+  /* ---------- CTA band ---------- */
+  .cta-band{
+    background:radial-gradient(120% 160% at 15% 0%, var(--green-dim), transparent 60%), var(--bg-alt);
+    border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+    padding:90px 0;text-align:left;
+  }
+  .cta-band h2{margin-bottom:14px;}
+  .cta-band p{max-width:480px;margin-bottom:30px;font-size:1.05rem;}
+
+  /* ---------- Filters ---------- */
+  .filter-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px;}
+  .filter-btn{
+    padding:9px 18px;border-radius:999px;font-size:0.87rem;font-weight:600;
+    border:1px solid var(--border);background:var(--surface);color:var(--text-secondary);
+    transition:all .16s ease;
+  }
+  .filter-btn:hover{border-color:var(--border-strong);color:var(--text);}
+  .filter-btn.active{background:var(--green-dim);border-color:var(--green-line);color:var(--green);}
+
+  /* ---------- Detail pages ---------- */
+  .breadcrumb{
+    display:inline-flex;align-items:center;gap:8px;font-size:0.88rem;color:var(--text-muted);margin-bottom:26px;
+  }
+  .breadcrumb a{color:var(--text-secondary);}
+  .breadcrumb a:hover{color:var(--green);}
+  .detail-hero-visual{
+    aspect-ratio:16/7;border-radius:var(--radius-lg);border:1px solid var(--border);
+    position:relative;overflow:hidden;margin-bottom:48px;
+    background:linear-gradient(150deg,var(--surface-2), var(--bg-alt));
+  }
+  .detail-block{margin-bottom:44px;}
+  .detail-block h3{margin-bottom:14px;}
+  .detail-block p{font-size:1rem;max-width:720px;}
+  .feature-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .feature-item{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);
+    padding:18px 20px;font-size:0.94rem;color:var(--text-secondary);display:flex;gap:12px;align-items:flex-start;
+  }
+  .feature-item svg{width:16px;height:16px;flex-shrink:0;margin-top:3px;color:var(--green);}
+  .info-panel{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);
+    padding:22px;display:flex;flex-direction:column;gap:16px;
+  }
+  .info-row{display:flex;justify-content:space-between;font-size:0.9rem;padding:10px 0;border-bottom:1px solid var(--border);}
+  .info-row:last-child{border-bottom:none;}
+  .info-row span:first-child{color:var(--text-muted);}
+  .badge-line{display:flex;align-items:center;gap:8px;font-size:0.85rem;color:var(--text-muted);background:var(--bg-alt);border:1px dashed var(--border-strong);padding:10px 14px;border-radius:10px;}
+  .detail-grid{display:grid;grid-template-columns:2fr 1fr;gap:48px;align-items:start;}
+
+  /* ---------- Contact ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+  .contact-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;}
+  .contact-card h3{margin-bottom:10px;}
+  .contact-row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border);font-size:0.95rem;}
+  .contact-row:last-child{border-bottom:none;}
+  .contact-row span:first-child{color:var(--text-muted);}
+
+  /* ---------- 404 ---------- */
+  .not-found{
+    min-height:80vh;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
+    padding-top:var(--nav-h);
+  }
+  .not-found .code{font-family:var(--font-display);font-size:clamp(4rem,14vw,9rem);font-weight:700;color:var(--surface-2);line-height:1;-webkit-text-stroke:1px var(--border-strong);}
+
+  /* ---------- Footer ---------- */
+  footer.site-footer{border-top:1px solid var(--border);padding:64px 0 32px;background:var(--bg-alt);}
+  .footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+  .footer-brand-row{display:flex;align-items:center;gap:11px;margin-bottom:16px;}
+  .footer-tagline{max-width:280px;font-size:0.95rem;}
+  .footer-col h4{font-family:var(--font-display);font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;}
+  .footer-col ul{display:flex;flex-direction:column;gap:11px;}
+  .footer-col a{font-size:0.92rem;color:var(--text-secondary);}
+  .footer-col a:hover{color:var(--green);}
+  .footer-bottom{
+    border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;
+    flex-wrap:wrap;gap:12px;font-size:0.85rem;color:var(--text-muted);
+  }
+
+  /* ---------- Utility ---------- */
+  .mt-8{margin-top:8px;}
+  .center-text{text-align:center;}
+  .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:1024px){
+    .hero-grid{grid-template-columns:1fr;}
+    .visual-block{max-width:460px;margin:0 auto;aspect-ratio:16/10;}
+    .card-grid{grid-template-columns:repeat(2,1fr);}
+    .split{grid-template-columns:1fr;gap:36px;}
+    .footer-top{grid-template-columns:1fr 1fr;}
+    .detail-grid{grid-template-columns:1fr;}
+    .feature-list{grid-template-columns:1fr;}
+  }
+  @media (max-width:860px){
+    nav.primary-links{display:none;}
+    .nav-actions .btn-secondary{display:none;}
+    .hamburger{display:flex;}
+  }
+  @media (max-width:640px){
+    .container{padding:0 20px;}
+    .card-grid{grid-template-columns:1fr;}
+    .creators-grid{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;gap:32px;}
+    .section{padding:64px 0;}
+    .hero{padding:calc(var(--nav-h) + 56px) 0 60px;}
+    .hero-actions .btn{width:100%;}
+    .hero-actions{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="#/" class="brand" aria-label="Squiboom Studios home">
+      <span class="brand-mark">SQ</span>
+      <span class="brand-name">Squiboom Studios</span>
+    </a>
+
+    <nav class="primary-links" aria-label="Primary">
+      <a href="#/" class="nav-link" data-route="/">Home</a>
+      <div class="nav-dropdown">
+        <a href="#/projects" class="nav-link" data-route="/projects">Projects</a>
+        <div class="nav-dropdown-panel">
+          <a href="#/projects">All Projects</a>
+          <a href="#/projects?cat=games">Games</a>
+          <a href="#/projects?cat=ai">AI</a>
+          <a href="#/projects?cat=creative">Creative</a>
+        </div>
+      </div>
+      <a href="#/sai" class="nav-link" data-route="/sai">SAI</a>
+      <a href="#/about" class="nav-link" data-route="/about">About</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="#/contact" class="btn btn-secondary btn-sm">Contact</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-inner">
+    <a href="#/" class="mobile-link">Home</a>
+    <a href="#/projects" class="mobile-link">Projects</a>
+    <div class="mobile-sub">
+      <a href="#/projects?cat=games">Games</a>
+      <a href="#/projects?cat=ai">AI</a>
+      <a href="#/projects?cat=creative">Creative</a>
+    </div>
+    <a href="#/sai" class="mobile-link">SAI</a>
+    <a href="#/about" class="mobile-link">About</a>
+    <a href="#/creators" class="mobile-link">Creators</a>
+    <a href="#/contact" class="mobile-link">Contact</a>
+    <div class="mobile-menu-cta">
+      <a href="#/projects" class="btn btn-primary">Explore Projects</a>
+    </div>
+  </div>
+</div>
+
+<main id="main" tabindex="-1"></main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-row">
+          <span class="brand-mark">SQ</span>
+          <span class="brand-name">Squiboom Studios</span>
+        </div>
+        <p class="footer-tagline">Creating experiences beyond the game.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <ul>
+          <li><a href="#/">Home</a></li>
+          <li><a href="#/projects">Projects</a></li>
+          <li><a href="#/sai">SAI</a></li>
+          <li><a href="#/about">About</a></li>
+          <li><a href="#/creators">Creators</a></li>
+          <li><a href="#/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Projects</h4>
+        <ul id="footerProjectLinks"></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Squiboom Studios. All rights reserved.</span>
+      <span>Built for Roblox.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   DATA
+========================================================= */
+const PROJECTS = [
+  {
+    slug: "squiboom-hangout-island",
+    name: "Squiboom Hangout Island",
+    short: "A Roblox hangout experience built around exploration, interaction, and social experiences.",
+    categories: ["games","experiences"],
+    categoryLabel: "Game / Hangout",
+    status: "In development",
+    tone: "mix",
+    overview: "Squiboom Hangout Island is Squiboom Studios' social space on Roblox — a place built for players to explore, meet up, and interact in an open island environment.",
+    features: [
+      "An open island layout designed for exploration",
+      "Spaces built around social interaction and hanging out",
+      "A relaxed, low-pressure pace compared to competitive games",
+      "Ongoing development by the Squiboom team"
+    ],
+    related: ["squiobby-easy-hard","casa-verde"]
+  },
+  {
+    slug: "squiobby-easy-hard",
+    name: "SquiObby: Easy - Hard",
+    short: "An obstacle-course experience designed around progressively challenging stages.",
+    categories: ["games"],
+    categoryLabel: "Game / Obby",
+    status: "In development",
+    tone: "green",
+    overview: "SquiObby: Easy - Hard is Squiboom Studios' obstacle-course project, built around a straightforward idea: stages that get harder as players go.",
+    features: [
+      "A progression of stages from easy to hard",
+      "Obstacle-course gameplay built for Roblox",
+      "Designed for players who enjoy a clear sense of progress",
+      "Part of Squiboom's ongoing games lineup"
+    ],
+    related: ["squiboom-hangout-island","sai"]
+  },
+  {
+    slug: "sai",
+    name: "SAI",
+    short: "Squiboom's AI-focused project exploring intelligent assistance and interactive experiences.",
+    categories: ["ai"],
+    categoryLabel: "AI",
+    status: "Experimental",
+    tone: "blue",
+    overview: "SAI is Squiboom Studios' exploration into AI and interactive assistance — a project focused on how intelligent systems might fit inside a Roblox experience.",
+    features: [
+      "An experimental take on AI-driven interaction",
+      "Focused on assistance-style experiences",
+      "Built as part of Squiboom's ongoing AI exploration",
+      "Connected conceptually to the Guava SAI Verde Project"
+    ],
+    related: ["ai-experience","guava-sai-verde"]
+  },
+  {
+    slug: "ai-experience",
+    name: "AI Experience",
+    short: "An experimental experience combining AI concepts with interactive digital environments.",
+    categories: ["ai","experiences"],
+    categoryLabel: "AI / Experience",
+    status: "Experimental",
+    tone: "blue",
+    overview: "AI Experience is Squiboom Studios' experimental space for combining AI concepts with interactive digital environments — an early look at where these ideas can go.",
+    features: [
+      "Interactive digital environments built around AI concepts",
+      "An experimental, exploratory approach",
+      "Developed alongside the SAI project",
+      "Focused on ideas rather than fixed technical claims"
+    ],
+    related: ["sai","guava-sai-verde"]
+  },
+  {
+    slug: "guava-sai-verde",
+    name: "Guava SAI Verde Project",
+    short: "An experimental Squiboom project combining the SAI concept with the Guava Verde direction.",
+    categories: ["experimental","ai"],
+    categoryLabel: "Experimental / AI",
+    status: "Experimental",
+    tone: "mix",
+    overview: "The Guava SAI Verde Project brings together Squiboom's SAI concept and its Guava Verde visual direction into a single experimental project.",
+    features: [
+      "Combines the SAI concept with the Guava Verde identity",
+      "An experimental direction rather than a finished product",
+      "Shares its visual language with CASÁ VERDE",
+      "Part of Squiboom's ongoing AI and creative exploration"
+    ],
+    related: ["sai","casa-verde"]
+  },
+  {
+    slug: "casa-verde",
+    name: "CASÁ VERDE",
+    short: "A creative Squiboom project built around the CASÁ VERDE identity.",
+    categories: ["creative","experiences"],
+    categoryLabel: "Creative / Experience",
+    status: "In development",
+    tone: "green",
+    overview: "CASÁ VERDE is a creative project from Squiboom Studios, built around its own distinct visual identity within the wider Squiboom universe.",
+    features: [
+      "A dedicated visual identity within the Squiboom universe",
+      "Built as a creative experience rather than a competitive game",
+      "Shares its green-inspired language with the Guava SAI Verde Project",
+      "Ongoing development by the Squiboom team"
+    ],
+    related: ["guava-sai-verde","squiboom-hangout-island"]
+  }
+];
+
+const CREATORS = [
+  { name: "Arya", handle: "Squid" },
+  { name: "Erik", handle: "BoomMasok" }
+];
+
+const CATEGORY_LABELS = {
+  games: "Games",
+  ai: "AI",
+  experiences: "Experiences",
+  experimental: "Experimental",
+  creative: "Creative"
+};
+
+/* =========================================================
+   SMALL HELPERS
+========================================================= */
+const $ = (sel, ctx=document) => ctx.querySelector(sel);
+const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
+const byId = (id) => PROJECTS.find(p => p.slug === id);
+
+const iconArrow = `<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const iconCheck = `<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+function squareGrid(seedTone="mix", count=36){
+  let out = "";
+  for(let i=0;i<count;i++){
+    const r = Math.random();
+    let cls = "";
+    if(seedTone === "green") cls = r > 0.72 ? "on float" : "";
+    else if(seedTone === "blue") cls = r > 0.72 ? "on-blue float" : "";
+    else cls = r > 0.85 ? "on float" : (r > 0.7 ? "on-blue float" : "");
+    out += `<span class="${cls}" style="animation-delay:${(i%6)*0.4}s"></span>`;
+  }
+  return out;
+}
+
+function visualBlock(tone="mix"){
+  return `
+    <div class="visual-block">
+      <div class="glow g1"></div>
+      <div class="glow g2"></div>
+      <div class="grid-of-squares">${squareGrid(tone)}</div>
+    </div>`;
+}
+
+function thumb(project){
+  const toneClass = project.tone === "green" ? "tone-green" : project.tone === "blue" ? "tone-blue" : "tone-mix";
+  const dots = project.tone === "mix" ? `<span class="thumb-dot"></span><span class="thumb-dot"></span>` : `<span class="thumb-dot"></span>`;
+  return `<div class="project-thumb ${toneClass}">${dots}<span class="thumb-tag">${project.categoryLabel}</span></div>`;
+}
+
+function projectCard(project){
+  return `
+  <a href="#/projects/${project.slug}" class="project-card reveal" data-cats="${project.categories.join(' ')}">
+    ${thumb(project)}
+    <div class="project-card-head">
+      <h3>${project.name}</h3>
+      <span class="status-pill">${project.status}</span>
+    </div>
+    <p class="desc">${project.short}</p>
+    <div class="meta-row">
+      ${project.categories.map(c => `<span class="tag">${CATEGORY_LABELS[c]}</span>`).join('')}
+    </div>
+    <span class="card-cta">View Project ${iconArrow}</span>
+  </a>`;
+}
+
+function creatorCard(creator){
+  const initial = creator.name.charAt(0);
+  return `
+  <div class="creator-card reveal">
+    <div class="creator-avatar">${initial}</div>
+    <div>
+      <h3>${creator.name}</h3>
+      <div class="creator-handle mt-8"><span class="dot"></span> Known on Roblox as ${creator.handle}</div>
+    </div>
+    <p>Part of the two-person team behind Squiboom Studios, working across games, AI, and creative experiences.</p>
+  </div>`;
+}
+
+/* =========================================================
+   PAGE TEMPLATES
+========================================================= */
+function pageHome(){
+  return `
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-eyebrow-row">
+          <span class="eyebrow">Roblox creative studio</span>
+        </div>
+        <h1>Squiboom Studios</h1>
+        <p class="lede">Creating experiences beyond the game.</p>
+        <p class="sub">Squiboom Studios is a Roblox-based creative studio building games, AI experiences, interactive projects, and experimental digital worlds.</p>
+        <div class="hero-actions">
+          <a href="#/projects" class="btn btn-primary">Explore Projects</a>
+          <a href="#/creators" class="btn btn-secondary">Meet the Creators</a>
+        </div>
+      </div>
+      ${visualBlock("mix")}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="row-between section-head">
+        <div>
+          <span class="eyebrow">Projects</span>
+          <h2>What we're building</h2>
+        </div>
+        <a href="#/projects" class="btn btn-ghost btn-sm">View all projects ${iconArrow}</a>
+      </div>
+      <div class="card-grid">
+        ${PROJECTS.map(projectCard).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight" style="border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg-alt);">
+    <div class="container split">
+      <div>
+        <span class="eyebrow">About</span>
+        <h2>Small team. Big ideas.</h2>
+        <p style="margin:20px 0 30px;font-size:1.02rem;">Squiboom Studios is created by Arya and Erik, known on Roblox as Squid and BoomMasok. We experiment with games, AI, interactive experiences, and creative digital projects.</p>
+        <a href="#/about" class="btn btn-secondary">Meet Squiboom Studios</a>
+      </div>
+      ${visualBlock("green")}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Creators</span>
+        <h2>The people behind Squiboom</h2>
+      </div>
+      <div class="creators-grid">
+        ${CREATORS.map(creatorCard).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container">
+      <span class="eyebrow">Get exploring</span>
+      <h2>Explore the world of Squiboom.</h2>
+      <p>Discover our games, experiments, AI projects, and creative experiences.</p>
+      <a href="#/projects" class="btn btn-primary">View Projects</a>
+    </div>
+  </section>
+  `;
+}
+
+function pageProjects(initialCat){
+  const cats = ["all","games","ai","experiences","experimental","creative"];
+  const catLabels = { all:"All", games:"Games", ai:"AI", experiences:"Experiences", experimental:"Experimental", creative:"Creative" };
+  return `
+  <section class="section" style="padding-top:calc(var(--nav-h) + 56px);">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Projects</span>
+        <h2>Projects</h2>
+        <p>Games, experiments, AI, and interactive experiences from Squiboom Studios.</p>
+      </div>
+      <div class="filter-row" id="filterRow" role="group" aria-label="Filter projects by category">
+        ${cats.map(c => `<button class="filter-btn${c===initialCat?' active':''}" data-cat="${c}">${catLabels[c]}</button>`).join('')}
+      </div>
+      <div class="card-grid" id="projectGrid">
+        ${PROJECTS.map(projectCard).join('')}
+      </div>
+      <p id="emptyState" style="display:none;margin-top:24px;">No projects match this filter yet.</p>
+    </div>
+  </section>
+  `;
+}
+
+function pageProjectDetail(slug){
+  const p = byId(slug);
+  if(!p) return page404();
+  const relatedProjects = p.related.map(byId).filter(Boolean);
+  return `
+  <section class="section" style="padding-top:calc(var(--nav-h) + 48px);">
+    <div class="container">
+      <div class="breadcrumb"><a href="#/projects">Projects</a> <span>/</span> <span>${p.name}</span></div>
+
+      <span class="eyebrow${p.tone==='blue'?' blue':''}">${p.categoryLabel}</span>
+      <h1 style="margin-bottom:14px;">${p.name}</h1>
+      <p style="max-width:640px;font-size:1.05rem;margin-bottom:36px;">${p.short}</p>
+
+      <div class="detail-hero-visual">
+        <div class="glow g1"></div><div class="glow g2"></div>
+        <div class="grid-of-squares">${squareGrid(p.tone, 48)}</div>
+      </div>
+
+      <div class="detail-grid">
+        <div>
+          <div class="detail-block">
+            <h3>Overview</h3>
+            <p>${p.overview}</p>
+          </div>
+          <div class="detail-block">
+            <h3>Features</h3>
+            <div class="feature-list">
+              ${p.features.map(f => `<div class="feature-item">${iconCheck}<span>${f}</span></div>`).join('')}
+            </div>
+          </div>
+          <a href="#/projects" class="btn btn-secondary">${iconArrow.replace('M3 8h10M9 4l4 4-4 4','M13 8H3M7 4L3 8l4 4')} Back to Projects</a>
+        </div>
+
+        <div class="info-panel">
+          <div class="info-row"><span>Project</span><span>${p.name}</span></div>
+          <div class="info-row"><span>Category</span><span>${p.categoryLabel}</span></div>
+          <div class="info-row"><span>Status</span><span>${p.status}</span></div>
+          <div class="info-row"><span>Platform</span><span>Roblox</span></div>
+          <div class="badge-line">Not yet playable — in progress on Roblox.</div>
+        </div>
+      </div>
+
+      ${relatedProjects.length ? `
+      <div class="detail-block" style="margin-top:60px;">
+        <h3>Related projects</h3>
+        <div class="card-grid" style="margin-top:20px;grid-template-columns:repeat(${relatedProjects.length},1fr);">
+          ${relatedProjects.map(projectCard).join('')}
+        </div>
+      </div>` : ''}
+    </div>
+  </section>
+  `;
+}
+
+function pageSai(){
+  return `
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow blue">AI Project</span>
+        <h1>SAI</h1>
+        <p class="lede">Squiboom's exploration of AI and interactive assistance.</p>
+        <div class="hero-actions">
+          <a href="#/projects/sai" class="btn btn-primary">View Project Page</a>
+          <a href="#/ai-experience" class="btn btn-secondary">See AI Experience</a>
+        </div>
+      </div>
+      ${visualBlock("blue")}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="detail-block">
+        <span class="eyebrow blue">Overview</span>
+        <h3>What is SAI?</h3>
+        <p style="max-width:680px;">SAI is a Squiboom Studios AI project — an ongoing exploration of how intelligent systems can play a part inside a Roblox experience.</p>
+      </div>
+      <div class="detail-block">
+        <span class="eyebrow blue">Direction</span>
+        <h3>SAI Experience</h3>
+        <p style="max-width:680px;">As an experimental AI-focused project, SAI is where Squiboom tests ideas around interactive assistance. It's a space for exploration rather than a fixed product with a set feature list.</p>
+      </div>
+      <div class="detail-block">
+        <span class="eyebrow blue">Vision</span>
+        <h3>Vision</h3>
+        <p style="max-width:680px;">Exploring how intelligent systems can become part of interactive digital experiences.</p>
+      </div>
+      <a href="#/projects/sai" class="btn btn-secondary">Open SAI project page</a>
+    </div>
+  </section>
+  `;
+}
+
+function pageAiExperience(){
+  return `
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow blue">AI / Experience</span>
+        <h1>AI Experience</h1>
+        <p class="lede">An experimental experience combining AI concepts with interactive digital environments.</p>
+        <div class="hero-actions">
+          <a href="#/projects/ai-experience" class="btn btn-primary">View Project Page</a>
+          <a href="#/sai" class="btn btn-secondary">See SAI</a>
+        </div>
+      </div>
+      ${visualBlock("blue")}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="detail-block">
+        <span class="eyebrow blue">Overview</span>
+        <h3>Overview</h3>
+        <p style="max-width:680px;">AI Experience is Squiboom Studios' project for exploring what AI-driven ideas can look like inside an interactive Roblox environment.</p>
+      </div>
+      <div class="detail-block">
+        <span class="eyebrow blue">Concept</span>
+        <h3>Concept</h3>
+        <p style="max-width:680px;">The concept centers on combining AI-inspired ideas with digital environments people can move through and interact with, built alongside the wider SAI project.</p>
+      </div>
+      <div class="detail-block">
+        <span class="eyebrow blue">Experience</span>
+        <h3>Experience</h3>
+        <p style="max-width:680px;">As with SAI, this project is experimental — it's a space where Squiboom tries out interactive AI concepts rather than presenting a finished, fixed feature set.</p>
+      </div>
+      <div class="detail-block">
+        <span class="eyebrow blue">Future direction</span>
+        <h3>Future direction</h3>
+        <p style="max-width:680px;">Squiboom Studios plans to keep developing AI Experience alongside SAI as part of its broader AI exploration.</p>
+      </div>
+      <a href="#/projects/ai-experience" class="btn btn-secondary">Open AI Experience project page</a>
+    </div>
+  </section>
+  `;
+}
+
+function pageAbout(){
+  return `
+  <section class="hero" style="padding-bottom:60px;">
+    <div class="container">
+      <span class="eyebrow">About</span>
+      <h1 style="max-width:760px;">About Squiboom Studios</h1>
+      <p class="lede" style="max-width:640px;">Squiboom Studios is a Roblox-based creative studio founded by Squid and BoomMasok — Arya and Erik.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="row-between section-head">
+        <div><span class="eyebrow">Our Projects</span><h2>What we've built so far</h2></div>
+        <a href="#/projects" class="btn btn-ghost btn-sm">View all ${iconArrow}</a>
+      </div>
+      <div class="card-grid">
+        ${PROJECTS.map(projectCard).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight" style="border-top:1px solid var(--border);background:var(--bg-alt);">
+    <div class="container">
+      <span class="eyebrow">Our Approach</span>
+      <h2 style="margin-bottom:28px;">How we work</h2>
+      <div class="feature-list" style="grid-template-columns:repeat(3,1fr);">
+        ${["Creativity","Experimentation","Interactive experiences","Games","AI","Digital worlds"].map(item => `<div class="feature-item">${iconCheck}<span>${item}</span></div>`).join('')}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Creators</span>
+      <h2 style="margin-bottom:28px;">Creators</h2>
+      <div class="creators-grid">
+        ${CREATORS.map(creatorCard).join('')}
+      </div>
+    </div>
+  </section>
+  `;
+}
+
+function pageCreators(){
+  return `
+  <section class="hero" style="padding-bottom:70px;">
+    <div class="container">
+      <span class="eyebrow">Team</span>
+      <h1>The creators</h1>
+      <p class="lede" style="max-width:600px;">Squiboom Studios is built by a two-person team on Roblox.</p>
+    </div>
+  </section>
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="creators-grid">
+        <div class="creator-card reveal">
+          <div class="creator-avatar">A</div>
+          <div><h3>Arya</h3><div class="creator-handle mt-8"><span class="dot"></span> Roblox name: Squid</div></div>
+        </div>
+        <div class="creator-card reveal">
+          <div class="creator-avatar">E</div>
+          <div><h3>Erik</h3><div class="creator-handle mt-8"><span class="dot"></span> Roblox name: BoomMasok</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  `;
+}
+
+function pageCasaVerde(){
+  return `
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Creative / Experience</span>
+        <h1>CASÁ VERDE</h1>
+        <p class="lede">A creative Squiboom project built around the CASÁ VERDE identity.</p>
+        <div class="hero-actions">
+          <a href="#/projects/casa-verde" class="btn btn-primary">View Project Page</a>
+          <a href="#/guava-sai-verde" class="btn btn-secondary">See Guava SAI Verde</a>
+        </div>
+      </div>
+      ${visualBlock("green")}
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="detail-block">
+        <span class="eyebrow">Overview</span>
+        <h3>Overview</h3>
+        <p style="max-width:680px;">CASÁ VERDE is one of Squiboom Studios' creative projects — built around its own dedicated identity within the wider Squiboom universe.</p>
+      </div>
+      <div class="detail-block">
+        <span class="eyebrow">Concept</span>
+        <h3>Concept</h3>
+        <p style="max-width:680px;">Rather than being a competitive game, CASÁ VERDE is a creative experience, giving Squiboom a space to explore a distinct look and feel.</p>
+      </div>
+      <div class="detail-block">
+        <span class="eyebrow">Visual identity</span>
+        <h3>Visual identity</h3>
+        <p style="max-width:680px;">CASÁ VERDE carries a sophisticated, green-inspired visual language, echoed across the Squiboom site through its accent color.</p>
+      </div>
+      <div class="detail-block">
+        <span class="eyebrow">Related</span>
+        <h3>Related Squiboom projects</h3>
+        <div class="card-grid" style="margin-top:16px;grid-template-columns:repeat(2,1fr);">
+          ${projectCard(byId('guava-sai-verde'))}
+          ${projectCard(byId('squiboom-hangout-island'))}
+        </div>
+      </div>
+    </div>
+  </section>
+  `;
+}
+
+function pageGuava(){
+  return `
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow blue">Experimental / AI</span>
+        <h1>Guava SAI Verde Project</h1>
+        <p class="lede">An experimental Squiboom project combining the SAI concept with the Guava Verde direction.</p>
+        <div class="hero-actions">
+          <a href="#/projects/guava-sai-verde" class="btn btn-primary">View Project Page</a>
+          <a href="#/casa-verde" class="btn btn-secondary">See CASÁ VERDE</a>
+        </div>
+      </div>
+      ${visualBlock("mix")}
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="detail-block">
+        <span class="eyebrow blue">Overview</span>
+        <h3>Overview</h3>
+        <p style="max-width:680px;">The Guava SAI Verde Project brings together two threads of Squiboom's work: the SAI concept, and the green-inspired Guava Verde direction.</p>
+      </div>
+      <div class="detail-block">
+        <span class="eyebrow blue">Concept</span>
+        <h3>Concept</h3>
+        <p style="max-width:680px;">It's an experimental project rather than a finished one — a place where Squiboom mixes its AI ideas with its Guava Verde visual language.</p>
+      </div>
+      <div class="detail-block">
+        <span class="eyebrow blue">Connection to SAI</span>
+        <h3>Connection to SAI</h3>
+        <p style="max-width:680px;">Guava SAI Verde shares its conceptual roots with SAI, extending the same exploration of AI and interactive assistance into a new visual direction.</p>
+      </div>
+      <div class="detail-block">
+        <span class="eyebrow blue">Experimental direction</span>
+        <h3>Experimental direction</h3>
+        <p style="max-width:680px;">As with Squiboom's other AI work, this project stays intentionally open-ended — details are expected to evolve as the idea develops.</p>
+      </div>
+    </div>
+  </section>
+  `;
+}
+
+function pageContact(){
+  return `
+  <section class="hero" style="padding-bottom:70px;">
+    <div class="container">
+      <span class="eyebrow">Contact</span>
+      <h1>Let's connect.</h1>
+      <p class="lede" style="max-width:600px;">Squiboom Studios — building on Roblox.</p>
+    </div>
+  </section>
+  <section class="section" style="padding-top:0;">
+    <div class="container contact-grid">
+      <div class="contact-card">
+        <h3>Squiboom Studios</h3>
+        <p style="margin-bottom:16px;">A Roblox-based creative studio.</p>
+        <div class="contact-row"><span>Platform</span><span>Roblox</span></div>
+        <div class="contact-row"><span>Studio</span><span>Squiboom Studios</span></div>
+      </div>
+      <div class="contact-card">
+        <h3>The creators</h3>
+        <p style="margin-bottom:16px;">Squiboom Studios is made by two creators.</p>
+        <div class="contact-row"><span>Arya</span><span>Squid</span></div>
+        <div class="contact-row"><span>Erik</span><span>BoomMasok</span></div>
+      </div>
+    </div>
+    <div class="container" style="margin-top:32px;">
+      <div class="badge-line" style="max-width:640px;">No public contact channels have been shared yet — check back for updates.</div>
+    </div>
+  </section>
+  `;
+}
+
+function page404(){
+  return `
+  <div class="container not-found">
+    <span class="code">404</span>
+    <h1 style="margin:18px 0 12px;">Lost in the Squiboom universe?</h1>
+    <p style="margin-bottom:30px;font-size:1.05rem;">That page doesn't exist.</p>
+    <a href="#/" class="btn btn-primary">Return Home</a>
+  </div>
+  `;
+}
+
+/* =========================================================
+   ROUTER
+========================================================= */
+const app = $('#main');
+
+function parseHash(){
+  let hash = location.hash.replace(/^#/, '');
+  if(!hash) hash = '/';
+  const [path, query] = hash.split('?');
+  const params = new URLSearchParams(query || '');
+  const segments = path.split('/').filter(Boolean);
+  return { path, segments, params };
+}
+
+function setActiveNav(path){
+  $$('.nav-link').forEach(link => {
+    const r = link.getAttribute('data-route');
+    link.classList.toggle('active', r && (path === r || (r !== '/' && path.startsWith(r))));
+  });
+}
+
+function initReveal(){
+  const els = $$('.reveal');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(el => el.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(el => io.observe(el));
+}
+
+function initProjectFilters(activeCat){
+  const buttons = $$('#filterRow .filter-btn');
+  const cards = $$('#projectGrid .project-card');
+  const empty = $('#emptyState');
+  if(!buttons.length) return;
+
+  function apply(cat){
+    let visible = 0;
+    cards.forEach(card => {
+      const cats = card.getAttribute('data-cats').split(' ');
+      const show = cat === 'all' || cats.includes(cat);
+      card.style.display = show ? '' : 'none';
+      if(show) visible++;
+    });
+    if(empty) empty.style.display = visible === 0 ? 'block' : 'none';
+    buttons.forEach(b => b.classList.toggle('active', b.getAttribute('data-cat') === cat));
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cat = btn.getAttribute('data-cat');
+      apply(cat);
+      const url = cat === 'all' ? '#/projects' : `#/projects?cat=${cat}`;
+      history.replaceState(null, '', url);
+    });
+  });
+
+  apply(activeCat || 'all');
+}
+
+function populateFooterProjects(){
+  const list = $('#footerProjectLinks');
+  if(!list) return;
+  list.innerHTML = PROJECTS.map(p => `<li><a href="#/projects/${p.slug}">${p.name}</a></li>`).join('');
+}
+
+function closeMobileMenu(){
+  const menu = $('#mobileMenu');
+  const btn = $('#hamburgerBtn');
+  menu.classList.remove('open');
+  btn.setAttribute('aria-expanded', 'false');
+  btn.setAttribute('aria-label', 'Open menu');
+  document.body.style.overflow = '';
+}
+
+function render(){
+  const { path, segments, params } = parseHash();
+  let html = '';
+  let activeRoute = '/';
+
+  if(segments.length === 0){
+    html = pageHome(); activeRoute = '/';
+  } else if(segments[0] === 'projects' && segments.length === 1){
+    const cat = params.get('cat') || 'all';
+    html = pageProjects(cat); activeRoute = '/projects';
+  } else if(segments[0] === 'projects' && segments.length === 2){
+    html = pageProjectDetail(segments[1]); activeRoute = '/projects';
+  } else if(segments[0] === 'sai' && segments.length === 1){
+    html = pageSai(); activeRoute = '/sai';
+  } else if(segments[0] === 'ai-experience'){
+    html = pageAiExperience(); activeRoute = '/ai-experience';
+  } else if(segments[0] === 'about'){
+    html = pageAbout(); activeRoute = '/about';
+  } else if(segments[0] === 'creators'){
+    html = pageCreators(); activeRoute = '/creators';
+  } else if(segments[0] === 'casa-verde'){
+    html = pageCasaVerde(); activeRoute = '/casa-verde';
+  } else if(segments[0] === 'guava-sai-verde'){
+    html = pageGuava(); activeRoute = '/guava-sai-verde';
+  } else if(segments[0] === 'contact'){
+    html = pageContact(); activeRoute = '/contact';
+  } else {
+    html = page404(); activeRoute = '';
+  }
+
+  app.innerHTML = html;
+  setActiveNav(activeRoute);
+  closeMobileMenu();
+
+  if(segments[0] === 'projects' && segments.length === 1){
+    initProjectFilters(params.get('cat') || 'all');
+  }
+
+  initReveal();
+  window.scrollTo({ top: 0, behavior: 'auto' });
+  app.focus({ preventScroll: true });
+}
+
+window.addEventListener('hashchange', render);
+window.addEventListener('DOMContentLoaded', () => {
+  populateFooterProjects();
+  render();
+
+  const hamburgerBtn = $('#hamburgerBtn');
+  const mobileMenu = $('#mobileMenu');
+  hamburgerBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+    hamburgerBtn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  $$('#mobileMenu a').forEach(a => a.addEventListener('click', closeMobileMenu));
+});
+</script>
+</body>
+</html>
