@@ -1185,6 +1185,7 @@ function pageProjects(initialCat){
 function pageProjectDetail(slug){
   const p = byId(slug);
   if(!p) return page404();
+  if (slug === 'squiboom-hell-battlegrounds') return pageBattlegroundDetail(p);
   const relatedProjects = p.related.map(byId).filter(Boolean);
   return `
   <section class="section" style="padding-top:calc(var(--nav-h) + 48px);">
@@ -1232,6 +1233,159 @@ function pageProjectDetail(slug){
       </div>` : ''}
     </div>
   </section>
+  `;
+}
+
+function pageBattlegroundDetail(project){
+  return `
+  <div class="sai-shell">
+    <section class="sai-hero">
+      <div class="container sai-hero-inner">
+        <div>
+          <div class="sai-kicker">Arena combat</div>
+          <h1>Squiboom Hell Battlegrounds</h1>
+          <p class="lede">A sharper, more aggressive PvP experience built for quick fights, weapon control, and direct pressure inside Roblox.</p>
+          <p class="sub">This project is the studio’s battle-forward experience — intense, movement-heavy, and designed to feel alive from the first second to the final clash.</p>
+          <div class="sai-actions">
+            <a href="#/projects" class="btn btn-primary">Back to projects</a>
+            <a href="#/sai" class="btn btn-secondary">Explore SAI</a>
+          </div>
+        </div>
+
+        <div class="sai-panel sai-console reveal">
+          <div class="sai-console-header">
+            <div class="sai-dots"><span></span><span></span><span></span></div>
+            <div class="sai-console-name">Squiboom // Arena</div>
+          </div>
+
+          <div class="sai-screen">
+            <div class="sai-visual-grid">
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+
+            <div class="sai-chip-row">
+              <span class="sai-chip">PvP</span>
+              <span class="sai-chip">Arena</span>
+              <span class="sai-chip">Roblox</span>
+            </div>
+
+            <div class="sai-list">
+              <div class="sai-list-item">
+                <span class="sai-bullet"></span>
+                <div>
+                  <strong>Fast duels</strong>
+                  Combat is built around speed, timing, and direct pressure.
+                </div>
+              </div>
+              <div class="sai-list-item">
+                <span class="sai-bullet"></span>
+                <div>
+                  <strong>Weapon variety</strong>
+                  Players can clash with premium and ordinary weapons in active fights.
+                </div>
+              </div>
+              <div class="sai-list-item">
+                <span class="sai-bullet"></span>
+                <div>
+                  <strong>Squiboom identity</strong>
+                  It carries the same premium visual direction as the wider SAI ecosystem.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sai-section">
+      <div class="container">
+        <div class="section-head" style="margin-bottom:28px;">
+          <span class="eyebrow blue">System</span>
+          <h2>Built for pressure, movement, and live combat.</h2>
+        </div>
+
+        <div class="sai-stats reveal">
+          <div class="sai-stat">
+            <span class="value">PvP</span>
+            <span class="label">Mode</span>
+          </div>
+          <div class="sai-stat">
+            <span class="value">Arena</span>
+            <span class="label">Style</span>
+          </div>
+          <div class="sai-stat">
+            <span class="value">Live</span>
+            <span class="label">Energy</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sai-section" style="padding-top:0;">
+      <div class="container">
+        <div class="sai-feature-grid">
+          <article class="sai-feature-card reveal">
+            <div class="sai-feature-icon">⚔</div>
+            <h3>Combat focus</h3>
+            <p>Squiboom Hell Battlegrounds is built around direct conflict — enemies, friends, and NPC rivals in fast, decisive fights.</p>
+          </article>
+
+          <article class="sai-feature-card reveal">
+            <div class="sai-feature-icon">◎</div>
+            <h3>Weapon identity</h3>
+            <p>Players can fight with different weapon styles, making each encounter feel distinct and more dynamic than a copied setup.</p>
+          </article>
+
+          <article class="sai-feature-card reveal">
+            <div class="sai-feature-icon">▣</div>
+            <h3>Studio direction</h3>
+            <p>It sits inside the wider Squiboom creative universe, carrying the same premium visual language with more intense energy.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sai-section" style="padding-top:0;">
+      <div class="container sai-two-column">
+        <div class="sai-copy-card reveal">
+          <span class="eyebrow blue">Experience</span>
+          <h3>Gameplay identity</h3>
+          <p>Squiboom Hell Battlegrounds is built around direct PvP pressure, with combat designed to reward timing, movement, and smart decisions. It feels immediate and active, with every fight carrying a stronger sense of momentum.</p>
+          <p style="margin-top:14px;">This is the same Squiboom design language as SAI, just tuned for a more intense arena-first experience instead of a softer AI interface feel.</p>
+        </div>
+
+        <div class="sai-stack-card reveal">
+          <span class="eyebrow blue">Highlights</span>
+          <h3>Core pillars</h3>
+          <div class="sai-stack-list">
+            <div class="sai-stack-item"><span>Combat flow</span><span>Fast</span></div>
+            <div class="sai-stack-item"><span>Weapon variety</span><span>High</span></div>
+            <div class="sai-stack-item"><span>Visual style</span><span>Premium</span></div>
+            <div class="sai-stack-item"><span>Squiboom link</span><span>SAI</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sai-cta-band">
+      <div class="container">
+        <div class="sai-cta-box reveal">
+          <div>
+            <span class="eyebrow blue">Project note</span>
+            <h2>Built inside the Squiboom universe.</h2>
+            <p>Squiboom Hell Battlegrounds sits in the same creative ecosystem as SAI, but with a more aggressive, competitive personality and more intense live-action energy.</p>
+          </div>
+          <div class="sai-actions" style="margin-top:0;">
+            <a href="#/projects" class="btn btn-primary">Open project list</a>
+            <a href="#/sai" class="btn btn-secondary">See SAI</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
   `;
 }
 
@@ -1390,46 +1544,134 @@ function pageSai(){
 
 function pageAiExperience(){
   return `
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <span class="eyebrow blue">AI / Experience</span>
-        <h1>AI Experience</h1>
-        <p class="lede">The first game where SAI introduction was released. Advance SAI experiences, early GUI experiences are published in this game.</p>
-        <div class="hero-actions">
-          <a href="#/projects/ai-experience" class="btn btn-primary">View Project Page</a>
-          <a href="#/sai" class="btn btn-secondary">See SAI</a>
+  <div class="premium-shell">
+    <section class="premium-hero">
+      <div class="container premium-hero-inner">
+        <div>
+          <div class="premium-kicker">AI / Experience</div>
+          <h1>AI Experience</h1>
+          <p class="lede">A living testbed for Squiboom’s AI ideas — where early interface concepts, experimentation, and digital interaction first come together.</p>
+          <p class="sub">This experience acts as the studio’s launchpad for SAI experimentation, helping shape the visual language and interaction model before those ideas move into broader projects.</p>
+          <div class="premium-actions">
+            <a href="#/projects/ai-experience" class="btn btn-primary">View project page</a>
+            <a href="#/sai" class="btn btn-secondary">See SAI</a>
+          </div>
+        </div>
+
+        <div class="premium-panel premium-console reveal">
+          <div class="premium-console-header">
+            <div class="premium-dots"><span></span><span></span><span></span></div>
+            <div class="premium-console-name">AI // Interface</div>
+          </div>
+
+          <div class="premium-screen">
+            <div class="premium-grid">
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+
+            <div class="premium-chips">
+              <span class="premium-chip">Genesis</span>
+              <span class="premium-chip">Prototype</span>
+              <span class="premium-chip">AI</span>
+            </div>
+
+            <div class="premium-list">
+              <div class="premium-list-item">
+                <span class="premium-bullet"></span>
+                <div><strong>Interface testing</strong>New GUI ideas and layout experiments are trialled here first.</div>
+              </div>
+              <div class="premium-list-item">
+                <span class="premium-bullet"></span>
+                <div><strong>Interaction design</strong>It acts as a place to refine how AI feels inside a digital space.</div>
+              </div>
+              <div class="premium-list-item">
+                <span class="premium-bullet"></span>
+                <div><strong>Creative parent</strong>It sits directly alongside the wider SAI project and its design direction.</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      ${visualBlock("blue")}
-    </div>
-  </section>
+    </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="detail-block">
-        <span class="eyebrow blue">Overview</span>
-        <h3>Overview</h3>
-        <p style="max-width:680px;">AI Experience is Squiboom Studios project for exploring what AI-driven ideas can look like inside an interactive Roblox environment.</p>
+    <section class="sai-section">
+      <div class="container">
+        <div class="section-head" style="margin-bottom:28px;">
+          <span class="eyebrow blue">Overview</span>
+          <h2>Where the system starts taking shape.</h2>
+        </div>
+
+        <div class="premium-stats reveal">
+          <div class="premium-stat"><span class="value">01</span><span class="label">Prototype space</span></div>
+          <div class="premium-stat"><span class="value">02</span><span class="label">Interface testing</span></div>
+          <div class="premium-stat"><span class="value">03</span><span class="label">Design evolution</span></div>
+        </div>
       </div>
-      <div class="detail-block">
-        <span class="eyebrow blue">Concept</span>
-        <h3>Concept</h3>
-        <p style="max-width:680px;">The concept centers on combining AI-inspired ideas with digital environments people can move through and interact with, built alongside the wider SAI project.</p>
+    </section>
+
+    <section class="sai-section" style="padding-top:0;">
+      <div class="container premium-feature-grid">
+        <article class="premium-feature-card reveal">
+          <div class="premium-feature-icon">✦</div>
+          <h3>Prototype identity</h3>
+          <p>AI Experience is where Squiboom explores what an AI-driven digital world can feel like before it becomes a wider product layer.</p>
+        </article>
+
+        <article class="premium-feature-card reveal">
+          <div class="premium-feature-icon">◎</div>
+          <h3>Visual testing</h3>
+          <p>It is used to develop and refine visuals, UI pacing, and interaction patterns that later influence the studio's bigger systems.</p>
+        </article>
+
+        <article class="premium-feature-card reveal">
+          <div class="premium-feature-icon">▣</div>
+          <h3>Future direction</h3>
+          <p>The experience remains experimental, but it clearly shows where the studio is heading in its AI and digital design work.</p>
+        </article>
       </div>
-      <div class="detail-block">
-        <span class="eyebrow blue">Experience</span>
-        <h3>Experience</h3>
-        <p style="max-width:680px;">As with SAI, this project is experimental — it's a space where Squiboom tries out interactive AI concepts rather than presenting a finished, fixed feature set.</p>
+    </section>
+
+    <section class="sai-section" style="padding-top:0;">
+      <div class="container premium-two-column">
+        <div class="premium-copy-card reveal">
+          <span class="eyebrow blue">Purpose</span>
+          <h3>Why it matters</h3>
+          <p>AI Experience is more than a concept project — it is the live testing ground for Squiboom’s evolving AI interface and interaction ideas. It brings together experimentation, design refinement, and player-facing presentation in one place.</p>
+          <p style="margin-top:14px;">This is where the studio learns what feels good, what feels clear, and what can be expanded into the next generation of SAI-driven systems.</p>
+        </div>
+
+        <div class="premium-stack-card reveal">
+          <span class="eyebrow blue">Core pillars</span>
+          <h3>What it explores</h3>
+          <div class="premium-stack-list">
+            <div class="premium-stack-item"><span>AI interaction</span><span>Focus</span></div>
+            <div class="premium-stack-item"><span>GUI iteration</span><span>Test</span></div>
+            <div class="premium-stack-item"><span>Product feel</span><span>Refine</span></div>
+            <div class="premium-stack-item"><span>Creative growth</span><span>Build</span></div>
+          </div>
+        </div>
       </div>
-      <div class="detail-block">
-        <span class="eyebrow blue">Future direction</span>
-        <h3>Future direction</h3>
-        <p style="max-width:680px;">Squiboom Studios plans to keep developing AI Experience alongside SAI as part of its broader AI exploration.</p>
+    </section>
+
+    <section class="premium-cta-band">
+      <div class="container">
+        <div class="premium-cta-box reveal">
+          <div>
+            <span class="eyebrow blue">Next move</span>
+            <h2>Keep exploring the wider SAI system.</h2>
+            <p>AI Experience is the first chapter in the studio’s direction — a way to shape the future before it becomes a bigger, more connected experience.</p>
+          </div>
+          <div class="premium-actions" style="margin-top:0;">
+            <a href="#/sai" class="btn btn-primary">Open SAI</a>
+            <a href="#/projects" class="btn btn-secondary">View projects</a>
+          </div>
+        </div>
       </div>
-      <a href="#/projects/ai-experience" class="btn btn-secondary">Open AI Experience project page</a>
-    </div>
-  </section>
+    </section>
+  </div>
   `;
 }
 
@@ -1479,27 +1721,63 @@ function pageAbout(){
 
 function pageCreators(){
   return `
-  <section class="hero" style="padding-bottom:70px;">
-    <div class="container">
-      <span class="eyebrow">Team</span>
-      <h1>The creators</h1>
-      <p class="lede" style="max-width:600px;">Squiboom Studios is built by a two-person team on Roblox.</p>
-    </div>
-  </section>
-  <section class="section" style="padding-top:0;">
-    <div class="container">
-      <div class="creators-grid">
-        <div class="creator-card reveal">
-          <div class="creator-avatar">A</div>
-          <div><h3>Arya</h3><div class="creator-handle mt-8"><span class="dot"></span> Roblox name: Squid</div></div>
+  <div class="premium-shell creator-shell">
+    <section class="premium-hero" style="padding-bottom:38px;">
+      <div class="container">
+        <div class="premium-kicker">Team</div>
+        <h1>Meet the creators</h1>
+        <p class="lede">Squiboom Studios is shaped by a two-person creative team building games, AI, and digital experiences with a strong focus on quality and atmosphere.</p>
+      </div>
+    </section>
+
+    <section class="sai-section" style="padding-top:0;">
+      <div class="container creator-showcase">
+        <div class="creator-card-premium reveal">
+          <div class="creator-badge">A</div>
+          <div>
+            <h3>Arya</h3>
+            <div class="creator-role"><span class="dot"></span> Roblox name: Squid</div>
+          </div>
+          <p class="creator-bio">Arya helps drive the studio’s creative direction and overall design language, shaping how Squiboom’s ideas feel across all of its digital experiences.</p>
+          <div class="creator-meta">
+            <span>Creative lead</span>
+            <span>Design</span>
+            <span>SAI</span>
+          </div>
         </div>
-        <div class="creator-card reveal">
-          <div class="creator-avatar">E</div>
-          <div><h3>Erik</h3><div class="creator-handle mt-8"><span class="dot"></span> Roblox name: BoomMasok</div></div>
+
+        <div class="creator-card-premium reveal">
+          <div class="creator-badge">E</div>
+          <div>
+            <h3>Erik</h3>
+            <div class="creator-role"><span class="dot"></span> Roblox name: BoomMasok</div>
+          </div>
+          <p class="creator-bio">Erik brings the studio’s technical and interaction-driven instincts, helping turn ideas into playable systems and polished experiences within the Roblox environment.</p>
+          <div class="creator-meta">
+            <span>Builds</span>
+            <span>Systems</span>
+            <span>Gameplay</span>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section class="premium-cta-band" style="padding-top:40px;">
+      <div class="container">
+        <div class="premium-cta-box reveal">
+          <div>
+            <span class="eyebrow blue">Studio</span>
+            <h2>Two creators. One creative studio.</h2>
+            <p>Squiboom Studios is built on a shared vision: to create polished Roblox experiences that blend atmosphere, experimentation, and long-term creative thinking.</p>
+          </div>
+          <div class="premium-actions" style="margin-top:0;">
+            <a href="#/about" class="btn btn-primary">About the studio</a>
+            <a href="#/projects" class="btn btn-secondary">View projects</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
   `;
 }
 
