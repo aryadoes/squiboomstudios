@@ -87,6 +87,357 @@
   .eyebrow.blue{color:var(--blue);}
   .eyebrow.blue::before{background:var(--blue);}
 
+  .sai-shell{
+    position:relative;
+    background:
+      radial-gradient(1100px 560px at 10% -10%, rgba(143,209,79,0.18), transparent 52%),
+      radial-gradient(780px 420px at 100% 0%, rgba(111,160,255,0.12), transparent 46%),
+      linear-gradient(180deg, rgba(12,15,13,0.96), rgba(10,12,11,1));
+    overflow:hidden;
+  }
+  .sai-shell::before,
+  .sai-shell::after{
+    content:"";
+    position:absolute;
+    width:420px;
+    height:420px;
+    border-radius:50%;
+    filter:blur(70px);
+    opacity:0.26;
+    pointer-events:none;
+  }
+  .sai-shell::before{
+    background:rgba(143,209,79,0.35);
+    top:-120px;
+    right:-60px;
+    animation:drift 16s ease-in-out infinite alternate;
+  }
+  .sai-shell::after{
+    background:rgba(111,160,255,0.18);
+    left:-90px;
+    bottom:-110px;
+    animation:drift 20s ease-in-out infinite alternate-reverse;
+  }
+  @keyframes drift{
+    0% { transform:translate3d(0, 0, 0) scale(1); }
+    100% { transform:translate3d(18px, -18px, 0) scale(1.08); }
+  }
+
+  .sai-hero{
+    position:relative;
+    padding:calc(var(--nav-h) + 90px) 0 58px;
+    border-bottom:1px solid var(--border);
+  }
+  .sai-hero-inner{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:40px;
+    align-items:center;
+  }
+  .sai-kicker{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:18px;
+    padding:8px 12px;
+    border:1px solid rgba(143,209,79,0.28);
+    background:rgba(143,209,79,0.08);
+    border-radius:999px;
+    color:var(--green-strong);
+    font-size:0.72rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    font-family:var(--font-display);
+    font-weight:600;
+  }
+  .sai-kicker::before{
+    content:"";
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 12px rgba(143,209,79,0.7);
+  }
+  .sai-hero h1{
+    margin-bottom:18px;
+    font-size:clamp(2.8rem,6vw,5rem);
+    letter-spacing:-0.05em;
+  }
+  .sai-hero .lede{
+    max-width:560px;
+    font-size:1.14rem;
+    color:rgba(244,246,244,0.82);
+  }
+  .sai-hero .sub{
+    margin-top:18px;
+    max-width:580px;
+    font-size:1rem;
+    color:var(--text-secondary);
+  }
+  .sai-actions{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-top:28px;
+  }
+  .sai-panel{
+    position:relative;
+    border:1px solid var(--border);
+    background:linear-gradient(180deg, rgba(18,21,18,0.95), rgba(13,16,14,0.95));
+    border-radius:28px;
+    overflow:hidden;
+    box-shadow:0 30px 70px rgba(0,0,0,0.32);
+  }
+  .sai-console{
+    position:relative;
+    min-height:480px;
+    padding:22px;
+  }
+  .sai-console-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:14px;
+    margin-bottom:20px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--border);
+  }
+  .sai-dots{display:flex;gap:8px;align-items:center;}
+  .sai-dots span{
+    width:10px;height:10px;border-radius:50%;display:block;
+  }
+  .sai-dots span:nth-child(1){background:#f1656a;}
+  .sai-dots span:nth-child(2){background:#f7c15e;}
+  .sai-dots span:nth-child(3){background:#6dd98c;}
+  .sai-console-name{
+    font-size:0.68rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--text-muted);
+    font-family:var(--font-display);
+  }
+  .sai-screen{
+    position:relative;
+    overflow:hidden;
+    border-radius:20px;
+    min-height:390px;
+    background:
+      linear-gradient(180deg, rgba(143,209,79,0.08), rgba(10,12,11,0.4)),
+      rgba(18,21,18,0.9);
+    border:1px solid rgba(143,209,79,0.18);
+    padding:22px;
+  }
+  .sai-screen::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(120deg, transparent 0%, rgba(143,209,79,0.12) 50%, transparent 100%);
+    transform:translateX(-100%);
+    animation:sweep 7s ease-in-out infinite;
+  }
+  @keyframes sweep{
+    0%{ transform:translateX(-100%); }
+    40%,100%{ transform:translateX(100%); }
+  }
+  .sai-visual-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:10px;
+    margin-bottom:22px;
+  }
+  .sai-visual-grid span{
+    height:48px;
+    border-radius:12px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.06);
+    animation:floaty 5.5s ease-in-out infinite;
+  }
+  .sai-visual-grid span:nth-child(2n){background:rgba(143,209,79,0.10); border-color:rgba(143,209,79,0.25);}
+  .sai-visual-grid span:nth-child(3n){background:rgba(111,160,255,0.08); border-color:rgba(111,160,255,0.22);}
+  .sai-chip-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:18px;
+  }
+  .sai-chip{
+    padding:8px 12px;
+    border-radius:999px;
+    border:1px solid rgba(143,209,79,0.22);
+    background:rgba(143,209,79,0.08);
+    color:var(--green-strong);
+    font-size:0.7rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-family:var(--font-display);
+    font-weight:600;
+  }
+  .sai-list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-top:16px;
+  }
+  .sai-list-item{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    padding:12px 14px;
+    border:1px solid rgba(255,255,255,0.05);
+    border-radius:14px;
+    background:rgba(10,12,11,0.38);
+    color:var(--text-secondary);
+  }
+  .sai-list-item strong{
+    display:block;
+    margin-bottom:2px;
+    font-family:var(--font-display);
+    color:var(--text);
+    font-weight:600;
+  }
+  .sai-bullet{
+    width:10px;height:10px;border-radius:50%;margin-top:7px;background:var(--green);box-shadow:0 0 14px rgba(143,209,79,0.7);
+  }
+
+  .sai-stats{
+    display:grid;
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    gap:18px;
+    margin-top:36px;
+  }
+  .sai-stat{
+    padding:22px 18px;
+    border:1px solid var(--border);
+    border-radius:18px;
+    background:rgba(18,21,18,0.78);
+  }
+  .sai-stat .value{
+    display:block;
+    margin-bottom:8px;
+    font-family:var(--font-display);
+    font-size:clamp(1.5rem,2vw,2.2rem);
+    color:var(--green-strong);
+    letter-spacing:-0.04em;
+  }
+  .sai-stat .label{
+    color:var(--text-secondary);
+    font-size:0.88rem;
+  }
+
+  .sai-section{
+    padding:72px 0;
+  }
+  .sai-feature-grid{
+    display:grid;
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    gap:22px;
+    margin-top:28px;
+  }
+  .sai-feature-card{
+    position:relative;
+    padding:26px 22px;
+    border-radius:22px;
+    border:1px solid var(--border);
+    background:linear-gradient(180deg, rgba(18,21,18,0.74), rgba(12,15,12,0.9));
+    min-height:220px;
+    overflow:hidden;
+  }
+  .sai-feature-card::before{
+    content:"";
+    position:absolute;
+    inset:auto -50px -50px auto;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:rgba(143,209,79,0.08);
+    filter:blur(30px);
+  }
+  .sai-feature-icon{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:44px;
+    height:44px;
+    border-radius:14px;
+    margin-bottom:18px;
+    background:rgba(143,209,79,0.08);
+    border:1px solid rgba(143,209,79,0.24);
+    color:var(--green-strong);
+    font-size:1.2rem;
+  }
+  .sai-feature-card h3{
+    margin-bottom:12px;
+    font-size:1.18rem;
+  }
+  .sai-feature-card p{
+    font-size:0.96rem;
+    line-height:1.65;
+  }
+
+  .sai-two-column{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:26px;
+    align-items:stretch;
+  }
+  .sai-copy-card,
+  .sai-stack-card{
+    padding:28px 24px;
+    border:1px solid var(--border);
+    border-radius:24px;
+    background:rgba(18,21,18,0.8);
+  }
+  .sai-copy-card h3,
+  .sai-stack-card h3{
+    margin-bottom:16px;
+  }
+  .sai-stack-list{display:flex;flex-direction:column;gap:14px;margin-top:18px;}
+  .sai-stack-item{
+    display:flex;justify-content:space-between;align-items:center;gap:16px;
+    border:1px solid var(--border);
+    padding:12px 14px;border-radius:12px;background:rgba(10,12,11,0.26);
+    color:var(--text-secondary);
+  }
+  .sai-stack-item span:last-child{
+    color:var(--green-strong);
+    font-family:var(--font-display);
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-size:0.68rem;
+  }
+
+  .sai-cta-band{
+    padding:90px 0 100px;
+    border-top:1px solid var(--border);
+    background:
+      radial-gradient(900px 260px at 50% 0%, rgba(143,209,79,0.12), transparent 60%),
+      rgba(10,12,11,0.9);
+  }
+  .sai-cta-box{
+    display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;
+    padding:30px 28px;
+    border:1px solid rgba(143,209,79,0.2);
+    border-radius:26px;
+    background:rgba(18,21,18,0.9);
+    box-shadow:0 26px 60px rgba(0,0,0,0.2);
+  }
+  .sai-cta-box h2{margin-bottom:8px;}
+  .sai-cta-box p{max-width:560px;}
+
+  @media (max-width: 1024px){
+    .sai-hero-inner,
+    .sai-two-column,
+    .sai-feature-grid{grid-template-columns:1fr;}
+    .sai-stats{grid-template-columns:repeat(3, minmax(0, 1fr));}
+  }
+  @media (max-width: 640px){
+    .sai-stats{grid-template-columns:1fr;}
+    .sai-hero{padding-top:calc(var(--nav-h) + 70px);}
+    .sai-actions .btn{width:100%;}
+    .sai-actions{flex-direction:column;}
+  }
+
   /* ---------- Buttons ---------- */
   .btn{
     display:inline-flex;align-items:center;justify-content:center;gap:8px;
@@ -876,41 +1227,154 @@ function pageProjectDetail(slug){
 
 function pageSai(){
   return `
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <span class="eyebrow blue">AI Project</span>
-        <h1>SAI</h1>
-        <p class="lede">Squiboom's exploration of AI and interactive assistance.</p>
-        <div class="hero-actions">
-          <a href="#/projects/sai" class="btn btn-primary">View Project Page</a>
-          <a href="#/ai-experience" class="btn btn-secondary">See AI Experience</a>
+  <div class="sai-shell">
+    <section class="sai-hero">
+      <div class="container sai-hero-inner">
+        <div>
+          <div class="sai-kicker">AI system</div>
+          <h1>SAI</h1>
+          <p class="lede">Squiboom Assistant Intelligence is the studio’s flagship AI concept — a digital guide designed to bring smarter, more responsive interaction into Roblox experiences.</p>
+          <p class="sub">Built to feel premium, calm, and useful, SAI blends interface design, experimentation, and player support into one evolving system.</p>
+          <div class="sai-actions">
+            <a href="#/projects/sai" class="btn btn-primary">View project page</a>
+            <a href="#/ai-experience" class="btn btn-secondary">See AI Experience</a>
+          </div>
+        </div>
+
+        <div class="sai-panel sai-console reveal">
+          <div class="sai-console-header">
+            <div class="sai-dots"><span></span><span></span><span></span></div>
+            <div class="sai-console-name">Squiboom // SAI</div>
+          </div>
+
+          <div class="sai-screen">
+            <div class="sai-visual-grid">
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+
+            <div class="sai-chip-row">
+              <span class="sai-chip">Assistant</span>
+              <span class="sai-chip">GUI</span>
+              <span class="sai-chip">Roblox</span>
+            </div>
+
+            <div class="sai-list">
+              <div class="sai-list-item">
+                <span class="sai-bullet"></span>
+                <div>
+                  <strong>Guidance</strong>
+                  Gives players clearer direction and smoother onboarding.
+                </div>
+              </div>
+              <div class="sai-list-item">
+                <span class="sai-bullet"></span>
+                <div>
+                  <strong>Context</strong>
+                  Designed to support a richer, more responsive gameplay flow.
+                </div>
+              </div>
+              <div class="sai-list-item">
+                <span class="sai-bullet"></span>
+                <div>
+                  <strong>Experimentation</strong>
+                  A live testing ground for future SAI interface ideas.
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      ${visualBlock("blue")}
-    </div>
-  </section>
+    </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="detail-block">
-        <span class="eyebrow blue">Overview</span>
-        <h3>What is SAI?</h3>
-        <p style="max-width:680px;">SAI is a Squiboom Studios AI project — an ongoing exploration of how intelligent systems can play a part inside a Roblox experience.</p>
+    <section class="sai-section">
+      <div class="container">
+        <div class="section-head" style="margin-bottom:28px;">
+          <span class="eyebrow blue">Overview</span>
+          <h2>Built to feel intelligent, useful, and premium.</h2>
+        </div>
+
+        <div class="sai-stats reveal">
+          <div class="sai-stat">
+            <span class="value">01</span>
+            <span class="label">AI-first direction</span>
+          </div>
+          <div class="sai-stat">
+            <span class="value">02</span>
+            <span class="label">Interaction design</span>
+          </div>
+          <div class="sai-stat">
+            <span class="value">03</span>
+            <span class="label">Experimental testing</span>
+          </div>
+        </div>
       </div>
-      <div class="detail-block">
-        <span class="eyebrow blue">Direction</span>
-        <h3>SAI Experience</h3>
-        <p style="max-width:680px;">As an experimental AI-focused project, SAI is where Squiboom tests ideas around interactive assistance. It's a space for exploration rather than a fixed product with a set feature list.</p>
+    </section>
+
+    <section class="sai-section" style="padding-top:0;">
+      <div class="container">
+        <div class="sai-feature-grid">
+          <article class="sai-feature-card reveal">
+            <div class="sai-feature-icon">✦</div>
+            <h3>Player guidance</h3>
+            <p>SAI helps create a cleaner experience for players by guiding them through systems, worlds, and actions with more clarity.</p>
+          </article>
+
+          <article class="sai-feature-card reveal">
+            <div class="sai-feature-icon">◎</div>
+            <h3>Interface testing</h3>
+            <p>The AI Experience acts as a proving ground for the interface itself — new layouts, typography, and interactions are trialled there first.</p>
+          </article>
+
+          <article class="sai-feature-card reveal">
+            <div class="sai-feature-icon">▣</div>
+            <h3>Studio vision</h3>
+            <p>It represents Squiboom’s broader exploration into AI-driven systems, ambient interaction, and futuristic digital design.</p>
+          </article>
+        </div>
       </div>
-      <div class="detail-block">
-        <span class="eyebrow blue">Vision</span>
-        <h3>Vision</h3>
-        <p style="max-width:680px;">Exploring how intelligent systems can become part of interactive digital experiences.</p>
+    </section>
+
+    <section class="sai-section" style="padding-top:0;">
+      <div class="container sai-two-column">
+        <div class="sai-copy-card reveal">
+          <span class="eyebrow blue">Purpose</span>
+          <h3>Why SAI matters</h3>
+          <p>SAI is not just a concept label — it is part of Squiboom’s goal to make digital experiences feel smarter, more responsive, and more polished. The project gives the studio a place to explore how AI can support players without breaking the feel of a Roblox world.</p>
+          <p style="margin-top:14px;">From user guidance to visual experimentation, SAI acts as the creative and technical foundation for Squiboom’s more advanced AI ideas.</p>
+        </div>
+
+        <div class="sai-stack-card reveal">
+          <span class="eyebrow blue">Core pillars</span>
+          <h3>What drives it</h3>
+          <div class="sai-stack-list">
+            <div class="sai-stack-item"><span>Assistive UX</span><span>Signal</span></div>
+            <div class="sai-stack-item"><span>AI experimentation</span><span>Live</span></div>
+            <div class="sai-stack-item"><span>Premium feel</span><span>Design</span></div>
+            <div class="sai-stack-item"><span>Roblox integration</span><span>Built</span></div>
+          </div>
+        </div>
       </div>
-      <a href="#/projects/sai" class="btn btn-secondary">Open SAI project page</a>
-    </div>
-  </section>
+    </section>
+
+    <section class="sai-cta-band">
+      <div class="container">
+        <div class="sai-cta-box reveal">
+          <div>
+            <span class="eyebrow blue">Next step</span>
+            <h2>Explore the SAI experience.</h2>
+            <p>See how Squiboom is blending intelligent interaction, interface design, and future-facing experimentation into a single creative system.</p>
+          </div>
+          <div class="sai-actions" style="margin-top:0;">
+            <a href="#/projects/sai" class="btn btn-primary">Open SAI project</a>
+            <a href="#/ai-experience" class="btn btn-secondary">AI Experience</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
   `;
 }
 
