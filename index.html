@@ -475,11 +475,17 @@
   }
   .brand{display:flex;align-items:center;gap:11px;}
   .brand-mark{
-    width:38px;height:38px;border-radius:10px;
-    background:linear-gradient(155deg,var(--green) 0%, #4f9e2c 100%);
+    position:relative;
+    width:40px;height:40px;border-radius:14px;
+    overflow:hidden;
     display:flex;align-items:center;justify-content:center;
-    font-family:var(--font-display);font-weight:700;color:#0a1207;font-size:0.95rem;
     flex-shrink:0;
+    border:1px solid rgba(255,255,255,0.16);
+    box-shadow:0 8px 20px rgba(143,209,79,0.18);
+    background:#0d120d;
+  }
+  .brand-mark img{
+    width:100%;height:100%;display:block;object-fit:cover;
   }
   .brand-name{font-family:var(--font-display);font-weight:600;font-size:1.02rem;letter-spacing:-0.01em;}
 
@@ -770,7 +776,9 @@
 <header class="site-nav">
   <div class="nav-inner">
     <a href="#/" class="brand" aria-label="Squiboom Studios home">
-      <span class="brand-mark">SQ</span>
+      <span class="brand-mark" aria-label="Squiboom Studios logo">
+        <img src="Blue and Black Minimalist Brand Logo.png" alt="Squiboom Studios logo" />
+      </span>
       <span class="brand-name">Squiboom Studios</span>
     </a>
 
@@ -824,7 +832,9 @@
     <div class="footer-top">
       <div>
         <div class="footer-brand-row">
-          <span class="brand-mark">SQ</span>
+          <span class="brand-mark" aria-label="Squiboom Studios logo">
+            <img src="Blue and Black Minimalist Brand Logo.png" alt="Squiboom Studios logo" />
+          </span>
           <span class="brand-name">Squiboom Studios</span>
         </div>
         <p class="footer-tagline">Creating experiences beyond the game.</p>
