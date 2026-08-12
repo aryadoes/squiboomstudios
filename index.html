@@ -817,7 +817,6 @@
     </div>
     <a href="#/sai" class="mobile-link">SAI</a>
     <a href="#/about" class="mobile-link">About</a>
-    <a href="#/creators" class="mobile-link">Creators</a>
     <a href="#/contact" class="mobile-link">Contact</a>
     <div class="mobile-menu-cta">
       <a href="#/projects" class="btn btn-primary">Explore Projects</a>
@@ -846,7 +845,6 @@
           <li><a href="#/projects">Projects</a></li>
           <li><a href="#/sai">SAI</a></li>
           <li><a href="#/about">About</a></li>
-          <li><a href="#/creators">Creators</a></li>
           <li><a href="#/contact">Contact</a></li>
         </ul>
       </div>
@@ -1005,11 +1003,6 @@ const PROJECTS = [
   }
 ];
 
-const CREATORS = [
-  { name: "Arya", handle: "Squid" },
-  { name: "Erik", handle: "BoomMasok" }
-];
-
 const CATEGORY_LABELS = {
   games: "Games",
   battleground: "Battleground",
@@ -1073,89 +1066,113 @@ function projectCard(project){
   </a>`;
 }
 
-function creatorCard(creator){
-  const initial = creator.name.charAt(0);
-  return `
-  <div class="creator-card reveal">
-    <div class="creator-avatar">${initial}</div>
-    <div>
-      <h3>${creator.name}</h3>
-      <div class="creator-handle mt-8"><span class="dot"></span> Known on Roblox as ${creator.handle}</div>
-    </div>
-    <p>Part of the two-person team behind Squiboom Studios, working across games, AI, and creative experiences.</p>
-  </div>`;
-}
-
 /* =========================================================
    PAGE TEMPLATES
 ========================================================= */
 function pageHome(){
   return `
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <div class="hero-eyebrow-row">
-          <span class="eyebrow">Roblox creative studio</span>
-        </div>
-        <h1>Squiboom Studios</h1>
-        <p class="lede">By Squid</p>
-        <p class="sub">Squiboom Studios is a Roblox-based creative studio building games, AI experiences, smooth experience, and computer like experience.</p>
-        <div class="hero-actions">
-          <a href="#/projects" class="btn btn-primary">Explore Projects</a>
-          <a href="#/creators" class="btn btn-secondary">Meet the Creators</a>
-        </div>
-      </div>
-      ${visualBlock("mix")}
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="row-between section-head">
+  <div class="sai-shell">
+    <section class="sai-hero">
+      <div class="container sai-hero-inner">
         <div>
-          <span class="eyebrow">Projects</span>
-          <h2>What we're building</h2>
+          <div class="sai-kicker">Welcome</div>
+          <h1>Squiboom Studios</h1>
+          <p class="lede">A premium Roblox studio shaping AI experiences, polished interfaces, and connected worlds through a shared creative vision.</p>
+          <p class="sub">Built around strong motion, premium presentation, and rich interaction, Squiboom is crafting a coherent studio experience across games and experiments.</p>
+          <div class="hero-actions" style="margin-top:32px;display:flex;flex-wrap:wrap;gap:14px;">
+            <a href="#/projects" class="btn btn-primary">Explore Projects</a>
+            <a href="#/about" class="btn btn-secondary">Discover the studio</a>
+          </div>
         </div>
-        <a href="#/projects" class="btn btn-ghost btn-sm">View all projects ${iconArrow}</a>
+        <div class="sai-panel sai-console reveal">
+          <div class="sai-console-header">
+            <div class="sai-dots"><span></span><span></span><span></span></div>
+            <div class="sai-console-name">Squiboom // Home</div>
+          </div>
+          <div class="sai-screen">
+            <div class="sai-visual-grid">
+              ${Array.from({length:24}).map(() => '<span></span>').join('')}
+            </div>
+            <div class="sai-chip-row">
+              <span class="sai-chip">Premium</span>
+              <span class="sai-chip">Roblox</span>
+              <span class="sai-chip">AI</span>
+            </div>
+            <div class="sai-list">
+              <div class="sai-list-item">
+                <span class="sai-bullet"></span>
+                <div><strong>Experiences</strong>Built with premium flow and polished interaction.</div>
+              </div>
+              <div class="sai-list-item">
+                <span class="sai-bullet"></span>
+                <div><strong>AI</strong>Exploring smart systems and connected story craft.</div>
+              </div>
+              <div class="sai-list-item">
+                <span class="sai-bullet"></span>
+                <div><strong>World</strong>Projects that feel part of the same Squiboom universe.</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="card-grid">
-        ${PROJECTS.map(projectCard).join('')}
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section-tight" style="border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg-alt);">
-    <div class="container split">
-      <div>
-        <span class="eyebrow">About</span>
-        <h2>We focus on the best experience we can provide.</h2>
-        <p style="margin:20px 0 30px;font-size:1.02rem;">Squiboom Studios don't only focus on game but GUI, Your experience, Less Bugs. We Squiboom always try to provide a best GUI experience and no instant promotions and Paid Robux Items.</p>
-        <a href="#/about" class="btn btn-secondary">Meet Squiboom Studios</a>
+    <section class="sai-section" style="padding-top:0;">
+      <div class="container sai-two-column">
+        <div class="sai-copy-card reveal">
+          <span class="eyebrow blue">Featured</span>
+          <h2>The studio’s approach</h2>
+          <p>Squiboom combines strong interface design, exploratory AI, and a premium visual identity to create experiences that feel cohesive, intentional, and alive.</p>
+        </div>
+        <div class="sai-stack-card reveal">
+          <span class="eyebrow blue">What we build</span>
+          <h3>Games, AI, and connected experiences.</h3>
+          <div class="sai-stack-list">
+            <div class="sai-stack-item"><span>Design</span><span>Intentional</span></div>
+            <div class="sai-stack-item"><span>AI</span><span>Adaptive</span></div>
+            <div class="sai-stack-item"><span>World</span><span>Connected</span></div>
+            <div class="sai-stack-item"><span>Play</span><span>Polished</span></div>
+          </div>
+        </div>
       </div>
-      ${visualBlock("green")}
-    </div>
-  </section>
+    </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Creators</span>
-        <h2>Founders</h2>
-      </div>       
-      <div class="creators-grid">
-        ${CREATORS.map(creatorCard).join('')}
+    <section class="sai-section" style="padding-top:0;">
+      <div class="container sai-feature-grid">
+        <article class="sai-feature-card reveal">
+          <div class="sai-feature-icon">✦</div>
+          <h3>Premium identity</h3>
+          <p>We use color, motion, and layout to make each experience feel intentional and elevated.</p>
+        </article>
+        <article class="sai-feature-card reveal">
+          <div class="sai-feature-icon">◎</div>
+          <h3>AI systems</h3>
+          <p>AI is part of the studio's direction, not just a label — it shapes interaction and narrative potential.</p>
+        </article>
+        <article class="sai-feature-card reveal">
+          <div class="sai-feature-icon">▣</div>
+          <h3>Connected experience</h3>
+          <p>Projects are designed with a shared Squiboom feeling, rather than isolated one-off games.</p>
+        </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="cta-band">
-    <div class="container">
-      <span class="eyebrow">Get exploring</span>
-      <h2>Explore the Squiboom Project and Games</h2>
-      <p>Squiboom Studios main focus is not just to build games but perfect experience for Roblox Players.</p>
-      <a href="#/projects" class="btn btn-primary">View Projects</a>
-    </div>
-  </section>
+    <section class="sai-cta-band" style="padding-top:0;">
+      <div class="container">
+        <div class="sai-cta-box reveal">
+          <div>
+            <span class="eyebrow blue">Start here</span>
+            <h2>Explore the latest Squiboom projects.</h2>
+            <p>See the studio's current work, including AI-driven experiments and premium Roblox experiences.</p>
+          </div>
+          <div class="sai-actions" style="margin-top:0;">
+            <a href="#/projects" class="btn btn-primary">View Projects</a>
+            <a href="#/about" class="btn btn-secondary">About Squiboom</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
   `;
 }
 
@@ -1677,102 +1694,116 @@ function pageAiExperience(){
 
 function pageAbout(){
   return `
-  <section class="hero" style="padding-bottom:60px;">
-    <div class="container">
-      <span class="eyebrow">About</span>
-      <h1 style="max-width:760px;">About Squiboom Studios</h1>
-      <p class="lede" style="max-width:640px;">Squiboom Studios is a Roblox-based creative studio founded by Squid and BoomMasok — Arya and Erik.</p>
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:0;">
-    <div class="container">
-      <div class="row-between section-head">
-        <div><span class="eyebrow">Our Projects</span><h2>What we've built so far</h2></div>
-        <a href="#/projects" class="btn btn-ghost btn-sm">View all ${iconArrow}</a>
+  <div class="sai-shell">
+    <section class="sai-hero">
+      <div class="container sai-hero-inner">
+        <div>
+          <div class="sai-kicker">About</div>
+          <h1>About Squiboom Studios</h1>
+          <p class="lede">Squiboom Studios is a Roblox creative studio focused on premium AI-driven systems, polished interfaces, and experiences that feel rich and purposeful.</p>
+          <p class="sub">Built by Arya and Erik, the studio blends game design, exploratory AI, and creative interaction into a single connected vision.</p>
+        </div>
+        <div class="sai-panel sai-console reveal">
+          <div class="sai-console-header">
+            <div class="sai-dots"><span></span><span></span><span></span></div>
+            <div class="sai-console-name">Studio // Identity</div>
+          </div>
+          <div class="sai-screen">
+            <div class="sai-visual-grid">
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="sai-chip-row">
+              <span class="sai-chip">Premium</span>
+              <span class="sai-chip">AI</span>
+              <span class="sai-chip">Roblox</span>
+            </div>
+            <div class="sai-list">
+              <div class="sai-list-item">
+                <span class="sai-bullet"></span>
+                <div><strong>Design-led</strong>We shape experiences with polished interface and interaction detail.</div>
+              </div>
+              <div class="sai-list-item">
+                <span class="sai-bullet"></span>
+                <div><strong>AI exploration</strong>Our work tests AI-driven interactions across projects.</div>
+              </div>
+              <div class="sai-list-item">
+                <span class="sai-bullet"></span>
+                <div><strong>Connected vision</strong>Every project shares a shared Squiboom universe feel.</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="card-grid">
-        ${PROJECTS.map(projectCard).join('')}
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section-tight" style="border-top:1px solid var(--border);background:var(--bg-alt);">
-    <div class="container">
-      <span class="eyebrow">Our Approach</span>
-      <h2 style="margin-bottom:28px;">How we work</h2>
-      <div class="feature-list" style="grid-template-columns:repeat(3,1fr);">
-        ${["Creativity","Experimentation","Interactive experiences","Games","AI","Digital worlds"].map(item => `<div class="feature-item">${iconCheck}<span>${item}</span></div>`).join('')}
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <span class="eyebrow">Creators</span>
-      <h2 style="margin-bottom:28px;">Creators</h2>
-      <div class="creators-grid">
-        ${CREATORS.map(creatorCard).join('')}
-      </div>
-    </div>
-  </section>
-  `;
-}
-
-function pageCreators(){
-  return `
-  <div class="premium-shell creator-shell">
-    <section class="premium-hero" style="padding-bottom:38px;">
+    <section class="sai-section">
       <div class="container">
-        <div class="premium-kicker">Team</div>
-        <h1>Meet the creators</h1>
-        <p class="lede">Squiboom Studios is shaped by a two-person creative team building games, AI, and digital experiences with a strong focus on quality and atmosphere.</p>
+        <div class="section-head" style="margin-bottom:28px;">
+          <span class="eyebrow blue">Studio</span>
+          <h2>How Squiboom builds premium Roblox experiences.</h2>
+        </div>
+        <div class="sai-stats reveal">
+          <div class="sai-stat"><span class="value">01</span><span class="label">AI exploration</span></div>
+          <div class="sai-stat"><span class="value">02</span><span class="label">Interface design</span></div>
+          <div class="sai-stat"><span class="value">03</span><span class="label">Experience flow</span></div>
+        </div>
       </div>
     </section>
 
     <section class="sai-section" style="padding-top:0;">
-      <div class="container creator-showcase">
-        <div class="creator-card-premium reveal">
-          <div class="creator-badge">A</div>
-          <div>
-            <h3>Arya</h3>
-            <div class="creator-role"><span class="dot"></span> Roblox name: Squid</div>
-          </div>
-          <p class="creator-bio">Arya helps drive the studio’s creative direction and overall design language, shaping how Squiboom’s ideas feel across all of its digital experiences.</p>
-          <div class="creator-meta">
-            <span>Creative lead</span>
-            <span>Design</span>
-            <span>SAI</span>
-          </div>
-        </div>
+      <div class="container sai-feature-grid">
+        <article class="sai-feature-card reveal">
+          <div class="sai-feature-icon">✦</div>
+          <h3>Connected products</h3>
+          <p>Squiboom builds projects that feel like pieces of a larger, coherent world — from AI systems to game experiences.</p>
+        </article>
+        <article class="sai-feature-card reveal">
+          <div class="sai-feature-icon">◎</div>
+          <h3>Premium interface</h3>
+          <p>The studio puts extra care into UI, motion, and polish so each experience feels refined.</p>
+        </article>
+        <article class="sai-feature-card reveal">
+          <div class="sai-feature-icon">▣</div>
+          <h3>Future-facing</h3>
+          <p>Squiboom is exploring where Roblox can go with AI, premium visuals, and new interaction models.</p>
+        </article>
+      </div>
+    </section>
 
-        <div class="creator-card-premium reveal">
-          <div class="creator-badge">E</div>
-          <div>
-            <h3>Erik</h3>
-            <div class="creator-role"><span class="dot"></span> Roblox name: BoomMasok</div>
-          </div>
-          <p class="creator-bio">Erik brings the studio’s technical and interaction-driven instincts, helping turn ideas into playable systems and polished experiences within the Roblox environment.</p>
-          <div class="creator-meta">
-            <span>Builds</span>
-            <span>Systems</span>
-            <span>Gameplay</span>
+    <section class="sai-section" style="padding-top:0;">
+      <div class="container sai-two-column">
+        <div class="sai-copy-card reveal">
+          <span class="eyebrow blue">Approach</span>
+          <h3>What makes us different</h3>
+          <p>Our studio combines polished interface thinking, AI experimentation, and a premium visual mindset. We don’t ship generic projects — we build connected experiences that feel intentional and high-end.</p>
+        </div>
+        <div class="sai-stack-card reveal">
+          <span class="eyebrow blue">Focus</span>
+          <h3>Core pillars</h3>
+          <div class="sai-stack-list">
+            <div class="sai-stack-item"><span>Design</span><span>Intentional</span></div>
+            <div class="sai-stack-item"><span>AI</span><span>Exploratory</span></div>
+            <div class="sai-stack-item"><span>Flow</span><span>Polished</span></div>
+            <div class="sai-stack-item"><span>World</span><span>Connected</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="premium-cta-band" style="padding-top:40px;">
+    <section class="sai-cta-band">
       <div class="container">
-        <div class="premium-cta-box reveal">
+        <div class="sai-cta-box reveal">
           <div>
-            <span class="eyebrow blue">Studio</span>
-            <h2>Two creators. One creative studio.</h2>
-            <p>Squiboom Studios is built on a shared vision: to create polished Roblox experiences that blend atmosphere, experimentation, and long-term creative thinking.</p>
+            <span class="eyebrow blue">Next step</span>
+            <h2>Explore how Squiboom brings ideas to life.</h2>
+            <p>See the studio’s latest projects and how the SAI system is shaping the future of the Squiboom experience.</p>
           </div>
-          <div class="premium-actions" style="margin-top:0;">
-            <a href="#/about" class="btn btn-primary">About the studio</a>
-            <a href="#/projects" class="btn btn-secondary">View projects</a>
+          <div class="sai-actions" style="margin-top:0;">
+            <a href="#/projects" class="btn btn-primary">View projects</a>
+            <a href="#/sai" class="btn btn-secondary">See SAI</a>
           </div>
         </div>
       </div>
@@ -2013,8 +2044,6 @@ function render(){
     html = pageAiExperience(); activeRoute = '/ai-experience';
   } else if(segments[0] === 'about'){
     html = pageAbout(); activeRoute = '/about';
-  } else if(segments[0] === 'creators'){
-    html = pageCreators(); activeRoute = '/creators';
   } else if(segments[0] === 'casa-verde'){
     html = pageCasaVerde(); activeRoute = '/casa-verde';
   } else if(segments[0] === 'guava-sai-verde'){
