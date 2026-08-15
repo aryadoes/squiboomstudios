@@ -890,7 +890,7 @@ const PROJECTS = [
     categoryLabel: "Game / Obby",
     status: "Obby / SAI Integrated",
     tone: "green",
-    overview: "SquiObby is Squiboom Studios first ever Obby game (SquiObby: Easy - Hard). However, the fact is that this game wasn't made for Guava it was project of Normal Squiboom Studios Development and Innovating Studios but we've decided to keep it SAI integrated game due to several reasons behind it. However, the SAI GUI is hidden to see the Graphical User Interface of Squiboom Assistant Intelligence, type /opensai in the chat after then you've to initiate a request to complete first step. Next, you have to do nothing our system will check and accept your request if you are found eligible, we do not gurantee immidiate request acception.",
+    overview: "SquiObby is Squiboom Studios first ever Obby game (SquiObby: Easy - Hard). However, the fact is that this game wasn't made for Guava it was project of Normal Squiboom Studios Development and Innovating Studios but we've decided to keep it SAI integrated game due to several reasons behind it. The SAI system remains integrated into the experience, and players can trigger it in chat by typing /opensai to begin a request. After that, the system checks the request and accepts it if the player is eligible, though acceptance is not guaranteed immediately.",
     features: [
       "A Game where players are moving from easy stage to hard stage and then they can go to Obby End to enjoy masks, dresses, jumpers, high/low speed facility and more. Some of the benifits are from Squiboom Studios.",
       "Players can unlock speed, jump and more in the NOOB SHOP.",
@@ -907,7 +907,7 @@ const PROJECTS = [
     categoryLabel: "AI",
     status: "Built for Everyone",
     tone: "blue",
-    overview: "Squiboom Assistant Intelligence is Squiboom’s specialized artificial intelligence system, designed to guide and assist players across Squiboom Roblox experiences. SAI was first introduced through the AI Experience, where it served as a demonstration and testing platform for upcoming SAI models and features. It was later integrated into Squiboom Hell Battlegrounds, bringing SAI directly to players. The AI Experience also acts as the primary testing ground for SAI’s interface development, meaning new GUI designs, fonts, visual changes, and interface features are introduced and tested there before being implemented into other Squiboom experiences.",
+    overview: "Squiboom Assistant Intelligence is Squiboom’s specialized artificial intelligence system, designed to guide and assist players across Squiboom Roblox experiences. SAI was first introduced through the AI Experience, where it served as a demonstration and testing platform for upcoming SAI models and features. It was later integrated into Squiboom Hell Battlegrounds, bringing SAI directly to players. The AI Experience also acts as the primary testing ground for SAI’s system development, meaning new ideas, features, and interaction patterns are introduced and tested there before being implemented into other Squiboom experiences.",
     features: [
       "An experimental take on AI-driven interaction",
       "Focused on assistance-style experiences",
@@ -963,19 +963,19 @@ const PROJECTS = [
       "PvP Battleground Game by Squiboom Studios",
       "SAI integrated",
       "Shares its visual language Guava SAI Verde Project",
-      "Updates are rare due to GUI, Scripts, LocalScripts, ModuleScripts and more."
+      "Updates are rare due to script complexity and ongoing project work."
     ],
     related: ["sai","casa-verde"]
   },
       {
     slug: "guava-program-developer",
     name: "Guava SAI Developer Program",
-    short: "A special Graphical User Interface where Roblox Game Developers can give access to the player to save notes, built-in apps and more.",
+    short: "A special system where Roblox game developers can give players access to notes, built-in apps, and more.",
     categories: ["ai"],
     categoryLabel: "Developer",
     status: "Developer / Not Released",
     tone: "mix",
-    overview: "A GUI-like software where developers can add this to their game to provide players with the Squiboom Assistant Intelligence directly within their game, along with special built-in features. By sending /opensoftware, a taskbar-like structure will open, consisting of the Country Time, Date, built-in apps, and more, including a calculator.",
+    overview: "A software system where developers can add this to their game to provide players with the Squiboom Assistant Intelligence directly within their game, along with special built-in features. By sending /opensoftware, a taskbar-like structure will open, consisting of the Country Time, Date, built-in apps, and more, including a calculator.",
     features: [
       "Developer only Program",
       "SAI integrated",
@@ -1077,7 +1077,7 @@ function pageHome(){
         <div>
           <div class="sai-kicker">Welcome</div>
           <h1>Squiboom Studios</h1>
-          <p class="lede">A premium Roblox studio shaping AI experiences, polished interfaces, and connected worlds through a shared creative vision.</p>
+          <p class="lede">A premium Roblox studio shaping AI experiences, connected worlds, and creative projects through a shared vision.</p>
           <p class="sub">Built around strong motion, premium presentation, and rich interaction, Squiboom is crafting a coherent studio experience across games and experiments.</p>
           <div class="hero-actions" style="margin-top:32px;display:flex;flex-wrap:wrap;gap:14px;">
             <a href="#/projects" class="btn btn-primary">Explore Projects</a>
@@ -1122,7 +1122,7 @@ function pageHome(){
         <div class="sai-copy-card reveal">
           <span class="eyebrow blue">Featured</span>
           <h2>The studio’s approach</h2>
-          <p>Squiboom combines strong interface design, exploratory AI, and a premium visual identity to create experiences that feel cohesive, intentional, and alive.</p>
+          <p>Squiboom combines exploratory AI, strong gameplay ideas, and a premium creative identity to make experiences feel cohesive, intentional, and alive.</p>
         </div>
         <div class="sai-stack-card reveal">
           <span class="eyebrow blue">What we build</span>
@@ -1202,6 +1202,7 @@ function pageProjects(initialCat){
 function pageProjectDetail(slug){
   const p = byId(slug);
   if(!p) return page404();
+  if (slug === 'squiobby-easy-hard') return pageSquiobbyDetail(p);
   if (slug === 'squiboom-hell-battlegrounds') return pageBattlegroundDetail(p);
   const relatedProjects = p.related.map(byId).filter(Boolean);
   return `
@@ -1250,6 +1251,159 @@ function pageProjectDetail(slug){
       </div>` : ''}
     </div>
   </section>
+  `;
+}
+
+function pageSquiobbyDetail(project){
+  return `
+  <div class="sai-shell">
+    <section class="sai-hero">
+      <div class="container sai-hero-inner">
+        <div>
+          <div class="sai-kicker">Obby / Game</div>
+          <h1>SquiObby: Easy - Hard</h1>
+          <p class="lede">The studio’s original obstacle challenge — a progression-based game that starts easy and pushes players into tougher, more rewarding runs.</p>
+          <p class="sub">This project is one of Squiboom’s earliest ideas, built around progression, movement, and a playful sense of momentum that still fits inside the wider Squiboom universe.</p>
+          <div class="sai-actions">
+            <a href="#/projects" class="btn btn-primary">Back to projects</a>
+            <a href="#/sai" class="btn btn-secondary">Explore SAI</a>
+          </div>
+        </div>
+
+        <div class="sai-panel sai-console reveal">
+          <div class="sai-console-header">
+            <div class="sai-dots"><span></span><span></span><span></span></div>
+            <div class="sai-console-name">Squiboom // Obby</div>
+          </div>
+
+          <div class="sai-screen">
+            <div class="sai-visual-grid">
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+
+            <div class="sai-chip-row">
+              <span class="sai-chip">Easy</span>
+              <span class="sai-chip">Hard</span>
+              <span class="sai-chip">Roblox</span>
+            </div>
+
+            <div class="sai-list">
+              <div class="sai-list-item">
+                <span class="sai-bullet"></span>
+                <div>
+                  <strong>Progression</strong>
+                  Players move from accessible stages into tougher obstacles with more pressure.
+                </div>
+              </div>
+              <div class="sai-list-item">
+                <span class="sai-bullet"></span>
+                <div>
+                  <strong>Rewards</strong>
+                  The game adds collectible-style progression and extra player value as goals are cleared.
+                </div>
+              </div>
+              <div class="sai-list-item">
+                <span class="sai-bullet"></span>
+                <div>
+                  <strong>Squiboom identity</strong>
+                  It keeps the studio’s early creative energy while fitting into the larger SAI ecosystem.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sai-section">
+      <div class="container">
+        <div class="section-head" style="margin-bottom:28px;">
+          <span class="eyebrow blue">Project</span>
+          <h2>Built around momentum, challenge, and progression.</h2>
+        </div>
+
+        <div class="sai-stats reveal">
+          <div class="sai-stat">
+            <span class="value">Easy</span>
+            <span class="label">Start</span>
+          </div>
+          <div class="sai-stat">
+            <span class="value">Hard</span>
+            <span class="label">Finish</span>
+          </div>
+          <div class="sai-stat">
+            <span class="value">SAI</span>
+            <span class="label">Link</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sai-section" style="padding-top:0;">
+      <div class="container">
+        <div class="sai-feature-grid">
+          <article class="sai-feature-card reveal">
+            <div class="sai-feature-icon">↗</div>
+            <h3>Stage flow</h3>
+            <p>The obby is built around simple early steps that gradually become more demanding, keeping the pace clear and exciting.</p>
+          </article>
+
+          <article class="sai-feature-card reveal">
+            <div class="sai-feature-icon">◎</div>
+            <h3>Player rewards</h3>
+            <p>Players can progress toward extra perks, cosmetic rewards, and more value as they keep moving through the course.</p>
+          </article>
+
+          <article class="sai-feature-card reveal">
+            <div class="sai-feature-icon">▣</div>
+            <h3>Squiboom roots</h3>
+            <p>It stands as one of the studio’s original ideas, while still sharing the same wider creative direction as SAI and later projects.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sai-section" style="padding-top:0;">
+      <div class="container sai-two-column">
+        <div class="sai-copy-card reveal">
+          <span class="eyebrow blue">Experience</span>
+          <h3>Why it matters</h3>
+          <p>SquiObby: Easy - Hard captures Squiboom’s early movement-based game design and the studio’s habit of turning a simple idea into a defined player experience. It is approachable at first, but it keeps building pressure and reward over time.</p>
+          <p style="margin-top:14px;">It also reflects Squiboom’s broader thinking: simple systems, smart progression, and a clear creative identity that connects with the rest of the studio’s work.</p>
+        </div>
+
+        <div class="sai-stack-card reveal">
+          <span class="eyebrow blue">Core pillars</span>
+          <h3>What drives it</h3>
+          <div class="sai-stack-list">
+            <div class="sai-stack-item"><span>Progression</span><span>Built</span></div>
+            <div class="sai-stack-item"><span>Challenge</span><span>Rising</span></div>
+            <div class="sai-stack-item"><span>Reward loop</span><span>Active</span></div>
+            <div class="sai-stack-item"><span>Squiboom link</span><span>SAI</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sai-cta-band">
+      <div class="container">
+        <div class="sai-cta-box reveal">
+          <div>
+            <span class="eyebrow blue">Project note</span>
+            <h2>One of the studio’s first major ideas.</h2>
+            <p>SquiObby fits naturally inside the wider Squiboom universe, carrying the same sense of experimentation and progression that connects it to the studio’s bigger creative direction.</p>
+          </div>
+          <div class="sai-actions" style="margin-top:0;">
+            <a href="#/projects" class="btn btn-primary">Open project list</a>
+            <a href="#/sai" class="btn btn-secondary">See SAI</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
   `;
 }
 
@@ -1331,7 +1485,7 @@ function pageBattlegroundDetail(project){
           </div>
           <div class="sai-stat">
             <span class="value">Arena</span>
-            <span class="label">Style</span>
+            <span class="label">Tone</span>
           </div>
           <div class="sai-stat">
             <span class="value">Live</span>
@@ -1371,7 +1525,7 @@ function pageBattlegroundDetail(project){
           <span class="eyebrow blue">Experience</span>
           <h3>Gameplay identity</h3>
           <p>Squiboom Hell Battlegrounds is built around direct PvP pressure, with combat designed to reward timing, movement, and smart decisions. It feels immediate and active, with every fight carrying a stronger sense of momentum.</p>
-          <p style="margin-top:14px;">This is the same Squiboom design language as SAI, just tuned for a more intense arena-first experience instead of a softer AI interface feel.</p>
+          <p style="margin-top:14px;">This keeps the same Squiboom creative direction as SAI, but tuned for a sharper, more competitive arena-first experience.</p>
         </div>
 
         <div class="sai-stack-card reveal">
@@ -1380,7 +1534,7 @@ function pageBattlegroundDetail(project){
           <div class="sai-stack-list">
             <div class="sai-stack-item"><span>Combat flow</span><span>Fast</span></div>
             <div class="sai-stack-item"><span>Weapon variety</span><span>High</span></div>
-            <div class="sai-stack-item"><span>Visual style</span><span>Premium</span></div>
+            <div class="sai-stack-item"><span>Creative direction</span><span>Premium</span></div>
             <div class="sai-stack-item"><span>Squiboom link</span><span>SAI</span></div>
           </div>
         </div>
@@ -1415,7 +1569,7 @@ function pageSai(){
           <div class="sai-kicker">AI system</div>
           <h1>SAI</h1>
           <p class="lede">Squiboom Assistant Intelligence is the studio’s flagship AI concept — a digital guide designed to bring smarter, more responsive interaction into Roblox experiences.</p>
-          <p class="sub">Built to feel premium, calm, and useful, SAI blends interface design, experimentation, and player support into one evolving system.</p>
+          <p class="sub">Built to feel premium, calm, and useful, SAI blends experimentation and player support into one evolving system.</p>
           <div class="sai-actions">
             <a href="#/projects/sai" class="btn btn-primary">View project page</a>
             <a href="#/ai-experience" class="btn btn-secondary">See AI Experience</a>
@@ -1438,7 +1592,7 @@ function pageSai(){
 
             <div class="sai-chip-row">
               <span class="sai-chip">Assistant</span>
-              <span class="sai-chip">GUI</span>
+              <span class="sai-chip">AI</span>
               <span class="sai-chip">Roblox</span>
             </div>
 
@@ -1461,7 +1615,7 @@ function pageSai(){
                 <span class="sai-bullet"></span>
                 <div>
                   <strong>Experimentation</strong>
-                  A live testing ground for future SAI interface ideas.
+                  A live testing ground for future SAI ideas and systems.
                 </div>
               </div>
             </div>
@@ -1484,7 +1638,7 @@ function pageSai(){
           </div>
           <div class="sai-stat">
             <span class="value">02</span>
-            <span class="label">Interaction design</span>
+            <span class="label">Experience flow</span>
           </div>
           <div class="sai-stat">
             <span class="value">03</span>
@@ -1505,8 +1659,8 @@ function pageSai(){
 
           <article class="sai-feature-card reveal">
             <div class="sai-feature-icon">◎</div>
-            <h3>Interface testing</h3>
-            <p>The AI Experience acts as a proving ground for the interface itself — new layouts, typography, and interactions are trialled there first.</p>
+            <h3>System testing</h3>
+            <p>The AI Experience acts as a proving ground for new interaction ideas — layouts, pacing, and experimentation are trialled there first.</p>
           </article>
 
           <article class="sai-feature-card reveal">
@@ -1524,16 +1678,16 @@ function pageSai(){
           <span class="eyebrow blue">Purpose</span>
           <h3>Why SAI matters</h3>
           <p>SAI is not just a concept label — it is part of Squiboom’s goal to make digital experiences feel smarter, more responsive, and more polished. The project gives the studio a place to explore how AI can support players without breaking the feel of a Roblox world.</p>
-          <p style="margin-top:14px;">From user guidance to visual experimentation, SAI acts as the creative and technical foundation for Squiboom’s more advanced AI ideas.</p>
+          <p style="margin-top:14px;">From user guidance to broader experimentation, SAI acts as the creative and technical foundation for Squiboom’s more advanced AI ideas.</p>
         </div>
 
         <div class="sai-stack-card reveal">
           <span class="eyebrow blue">Core pillars</span>
           <h3>What drives it</h3>
           <div class="sai-stack-list">
-            <div class="sai-stack-item"><span>Assistive UX</span><span>Signal</span></div>
+            <div class="sai-stack-item"><span>Assistive flow</span><span>Signal</span></div>
             <div class="sai-stack-item"><span>AI experimentation</span><span>Live</span></div>
-            <div class="sai-stack-item"><span>Premium feel</span><span>Design</span></div>
+            <div class="sai-stack-item"><span>Premium feel</span><span>Polish</span></div>
             <div class="sai-stack-item"><span>Roblox integration</span><span>Built</span></div>
           </div>
         </div>
@@ -1546,7 +1700,7 @@ function pageSai(){
           <div>
             <span class="eyebrow blue">Next step</span>
             <h2>Explore the SAI experience.</h2>
-            <p>See how Squiboom is blending intelligent interaction, interface design, and future-facing experimentation into a single creative system.</p>
+            <p>See how Squiboom is blending intelligent interaction and future-facing experimentation into a single creative system.</p>
           </div>
           <div class="sai-actions" style="margin-top:0;">
             <a href="#/projects/sai" class="btn btn-primary">Open SAI project</a>
@@ -1567,7 +1721,7 @@ function pageAiExperience(){
         <div>
           <div class="premium-kicker">AI / Experience</div>
           <h1>AI Experience</h1>
-          <p class="lede">A living testbed for Squiboom’s AI ideas — where early interface concepts, experimentation, and digital interaction first come together.</p>
+          <p class="lede">A living testbed for Squiboom’s AI ideas — where early concepts, experimentation, and digital interaction first come together.</p>
           <p class="sub">This experience acts as the studio’s launchpad for SAI experimentation, helping shape the visual language and interaction model before those ideas move into broader projects.</p>
           <div class="premium-actions">
             <a href="#/projects/ai-experience" class="btn btn-primary">View project page</a>
@@ -1578,7 +1732,7 @@ function pageAiExperience(){
         <div class="premium-panel premium-console reveal">
           <div class="premium-console-header">
             <div class="premium-dots"><span></span><span></span><span></span></div>
-            <div class="premium-console-name">AI // Interface</div>
+            <div class="premium-console-name">AI // System</div>
           </div>
 
           <div class="premium-screen">
@@ -1598,11 +1752,11 @@ function pageAiExperience(){
             <div class="premium-list">
               <div class="premium-list-item">
                 <span class="premium-bullet"></span>
-                <div><strong>Interface testing</strong>New GUI ideas and layout experiments are trialled here first.</div>
+                <div><strong>System testing</strong>New interaction ideas and concept experiments are trialled here first.</div>
               </div>
               <div class="premium-list-item">
                 <span class="premium-bullet"></span>
-                <div><strong>Interaction design</strong>It acts as a place to refine how AI feels inside a digital space.</div>
+                <div><strong>System feel</strong>It acts as a place to refine how AI feels inside a digital space.</div>
               </div>
               <div class="premium-list-item">
                 <span class="premium-bullet"></span>
@@ -1623,7 +1777,7 @@ function pageAiExperience(){
 
         <div class="premium-stats reveal">
           <div class="premium-stat"><span class="value">01</span><span class="label">Prototype space</span></div>
-          <div class="premium-stat"><span class="value">02</span><span class="label">Interface testing</span></div>
+          <div class="premium-stat"><span class="value">02</span><span class="label">System testing</span></div>
           <div class="premium-stat"><span class="value">03</span><span class="label">Design evolution</span></div>
         </div>
       </div>
@@ -1639,8 +1793,8 @@ function pageAiExperience(){
 
         <article class="premium-feature-card reveal">
           <div class="premium-feature-icon">◎</div>
-          <h3>Visual testing</h3>
-          <p>It is used to develop and refine visuals, UI pacing, and interaction patterns that later influence the studio's bigger systems.</p>
+          <h3>System testing</h3>
+          <p>It is used to develop and refine interaction patterns, pacing, and creative direction that later influence the studio's bigger systems.</p>
         </article>
 
         <article class="premium-feature-card reveal">
@@ -1656,7 +1810,7 @@ function pageAiExperience(){
         <div class="premium-copy-card reveal">
           <span class="eyebrow blue">Purpose</span>
           <h3>Why it matters</h3>
-          <p>AI Experience is more than a concept project — it is the live testing ground for Squiboom’s evolving AI interface and interaction ideas. It brings together experimentation, design refinement, and player-facing presentation in one place.</p>
+          <p>AI Experience is more than a concept project — it is the live testing ground for Squiboom’s evolving AI ideas and interaction systems. It brings together experimentation, refinement, and player-facing presentation in one place.</p>
           <p style="margin-top:14px;">This is where the studio learns what feels good, what feels clear, and what can be expanded into the next generation of SAI-driven systems.</p>
         </div>
 
@@ -1665,7 +1819,7 @@ function pageAiExperience(){
           <h3>What it explores</h3>
           <div class="premium-stack-list">
             <div class="premium-stack-item"><span>AI interaction</span><span>Focus</span></div>
-            <div class="premium-stack-item"><span>GUI iteration</span><span>Test</span></div>
+            <div class="premium-stack-item"><span>System iteration</span><span>Test</span></div>
             <div class="premium-stack-item"><span>Product feel</span><span>Refine</span></div>
             <div class="premium-stack-item"><span>Creative growth</span><span>Build</span></div>
           </div>
@@ -1700,7 +1854,7 @@ function pageAbout(){
         <div>
           <div class="sai-kicker">About</div>
           <h1>About Squiboom Studios</h1>
-          <p class="lede">Squiboom Studios is a Roblox creative studio focused on premium AI-driven systems, polished interfaces, and experiences that feel rich and purposeful.</p>
+          <p class="lede">Squiboom Studios is a Roblox creative studio focused on premium AI-driven systems, creative experiences, and projects that feel rich and purposeful.</p>
           <p class="sub">Built by Arya and Erik, the studio blends game design, exploratory AI, and creative interaction into a single connected vision.</p>
         </div>
         <div class="sai-panel sai-console reveal">
@@ -1723,7 +1877,7 @@ function pageAbout(){
             <div class="sai-list">
               <div class="sai-list-item">
                 <span class="sai-bullet"></span>
-                <div><strong>Design-led</strong>We shape experiences with polished interface and interaction detail.</div>
+                <div><strong>Creative-led</strong>We shape experiences with thoughtful interaction and strong visual direction.</div>
               </div>
               <div class="sai-list-item">
                 <span class="sai-bullet"></span>
@@ -1747,7 +1901,7 @@ function pageAbout(){
         </div>
         <div class="sai-stats reveal">
           <div class="sai-stat"><span class="value">01</span><span class="label">AI exploration</span></div>
-          <div class="sai-stat"><span class="value">02</span><span class="label">Interface design</span></div>
+          <div class="sai-stat"><span class="value">02</span><span class="label">Creative systems</span></div>
           <div class="sai-stat"><span class="value">03</span><span class="label">Experience flow</span></div>
         </div>
       </div>
@@ -1762,8 +1916,8 @@ function pageAbout(){
         </article>
         <article class="sai-feature-card reveal">
           <div class="sai-feature-icon">◎</div>
-          <h3>Premium interface</h3>
-          <p>The studio puts extra care into UI, motion, and polish so each experience feels refined.</p>
+          <h3>Premium feel</h3>
+          <p>The studio puts extra care into motion, presentation, and polish so each experience feels refined.</p>
         </article>
         <article class="sai-feature-card reveal">
           <div class="sai-feature-icon">▣</div>
@@ -1778,7 +1932,7 @@ function pageAbout(){
         <div class="sai-copy-card reveal">
           <span class="eyebrow blue">Approach</span>
           <h3>What makes us different</h3>
-          <p>Our studio combines polished interface thinking, AI experimentation, and a premium visual mindset. We don’t ship generic projects — we build connected experiences that feel intentional and high-end.</p>
+          <p>Our studio combines thoughtful interaction ideas, AI experimentation, and a premium visual mindset. We don’t ship generic projects — we build connected experiences that feel intentional and high-end.</p>
         </div>
         <div class="sai-stack-card reveal">
           <span class="eyebrow blue">Focus</span>
